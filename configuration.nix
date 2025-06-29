@@ -1,1 +1,0 @@
-machines/veta/configuration.nix
