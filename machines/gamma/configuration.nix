@@ -27,7 +27,7 @@
     ./hardware.nix
   ];
 
-  networking.hostName = "alpha";
+  networking.hostName = "gamma";
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = false;

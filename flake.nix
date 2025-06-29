@@ -35,6 +35,7 @@
           inherit system;
           modules = commonModules ++ [
             ./machines/alpha/configuration.nix
+            ./users/ayham/base.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -47,6 +48,7 @@
           inherit system;
           modules = commonModules ++ [
             ./machines/veta/configuration.nix
+            ./users/ayham/base.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -59,6 +61,7 @@
           inherit system;
           modules = commonModules ++ [
             ./machines/gamma/configuration.nix
+            ./users/ayham/base.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

@@ -10,6 +10,7 @@
     ./progs/gpg.nix
     ./progs/vim.nix
     ./progs/tmux.nix
+    ./progs/zsh.nix
 
     ./sway.nix
     ./browser.nix
