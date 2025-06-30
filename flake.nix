@@ -41,6 +41,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];
         };
@@ -55,6 +56,7 @@
         #    {
         #      home-manager.useGlobalPkgs = true;
         #      home-manager.useUserPackages = true;
+        #      home-manager.users.ayham = import ./users/ayham/home.nix;
         #    }
         #  ];
         #};
@@ -69,17 +71,18 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];
         };
       };
-      homeConfigurations = {
-        "ayham" = home-manager.lib.homeManagerConfiguration {
-          inherit system;
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          specialArgs = attrs;
-          modules = commonModules ++ [ ./users/ayham/home.nix ];
-        };
-      };
+      #homeConfigurations = {
+      #  "ayham" = home-manager.lib.homeManagerConfiguration {
+      #    inherit system;
+      #    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      #    specialArgs = attrs;
+      #    modules = commonModules ++ [ ./users/ayham/home.nix ];
+      #  };
+      #};
     };
 }
