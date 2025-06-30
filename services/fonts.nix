@@ -1,9 +1,9 @@
 { config, pkgs, ... }: {
   fonts = {
     fontDir.enable = true;
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       fira-mono
       libertine
       open-sans

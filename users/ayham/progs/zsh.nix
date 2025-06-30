@@ -2,8 +2,8 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
     ohMyZsh.enable = true;
     shellAliases = {
       myip = "curl ipinfo.io/ip";

@@ -11,7 +11,7 @@
       enableBashIntegration = true;
       enableSshSupport = true;
       grabKeyboardAndMouse = true;
-      pinentryPackage = pkgs.gtk2;
+      pinentry.package = pkgs.gtk2;
       sshKeys = [ "41FE9D7D43999B0A0344E4F4900E1E1A3E142065" ];
     };
 
