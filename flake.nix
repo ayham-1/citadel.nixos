@@ -46,20 +46,20 @@
           ];
         };
 
-        #veta = nixpkgs.lib.nixosSystem {
-        #  inherit system;
-        #  specialArgs = attrs;
-        #  modules = commonModules ++ [
-        #    ./machines/veta/configuration.nix
-        #    ./users/ayham/base.nix
-        #    home-manager.nixosModules.home-manager
-        #    {
-        #      home-manager.useGlobalPkgs = true;
-        #      home-manager.useUserPackages = true;
-        #      home-manager.users.ayham = import ./users/ayham/home.nix;
-        #    }
-        #  ];
-        #};
+        veta = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = attrs;
+          modules = commonModules ++ [
+            ./machines/veta/configuration.nix
+            ./users/ayham/base.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.ayham = import ./users/ayham/home.nix;
+            }
+          ];
+        };
 
         gamma = nixpkgs.lib.nixosSystem {
           inherit system;

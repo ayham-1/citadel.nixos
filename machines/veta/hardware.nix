@@ -3,7 +3,6 @@
     (modulesPath + "/installer/scan/not-detected.nix")
 
     nixos-hardware.nixosModules.common-cpu-intel
-    nixos-hardware.nixosModules.common-gpu-amd-sea-islands
     nixos-hardware.nixosModules.common-pc-ssd
 
     ../../profiles/donglify.nix
@@ -55,7 +54,7 @@
   networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

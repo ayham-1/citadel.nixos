@@ -4,6 +4,8 @@
 
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-pc-ssd
+
+    ../../profiles/donglify.nix
   ];
 
   boot.initrd.availableKernelModules =
