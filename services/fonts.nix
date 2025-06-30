@@ -14,10 +14,6 @@
     fontconfig = {
       enable = true;
       antialias = true;
-      hinting = true;
-      hintstyle = "hintfull";
-      rgba = "rgb";
-      autohint = true;
       defaultFonts = {
         monospace = [ "Fira Mono" ];
         serif = [ "Fira Serif" ];

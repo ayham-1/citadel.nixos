@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ <nixpkgs/nixos/modules/profiles/hardened.nix> ];
+  #imports = [ "${nixpkgs}/nixos/modules/profiles/hardened.nix" ];
   environment.memoryAllocator.provider = "libc";
 
   # Setup firewall
@@ -15,14 +15,6 @@
   # General Hardening
   security.forcePageTableIsolation = true;
   security.sudo.enable = true;
-  security.sysctl = {
-    "net.ipv4.conf.all.rp_filter" = 1;
-    "net.ipv4.conf.default.rp_filter" = 1;
-    "net.ipv4.tcp_syncookies" = 1;
-    "kernel.randomize_va_space" = 2;
-  };
-  security.protectHome = true;
-  security.protectSystem = "strict";
 
   # Kernel Hardening
   boot.kernelPackages = pkgs.linuxPackages_hardened;

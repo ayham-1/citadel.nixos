@@ -58,6 +58,4 @@
 
   programs.bash.enableCompletion = true;
   programs.zsh.enableCompletion = true;
-
-  system.copySystemConfiguration = true;
 }

@@ -12,7 +12,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nur, flake-utils, home-manager
-    , nixos-hardware, ... }:
+    , nixos-hardware, ... }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -33,6 +33,7 @@
       nixosConfigurations = {
         alpha = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = attrs;
           modules = commonModules ++ [
             ./machines/alpha/configuration.nix
             ./users/ayham/base.nix
@@ -44,21 +45,23 @@
           ];
         };
 
-        veta = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = commonModules ++ [
-            ./machines/veta/configuration.nix
-            ./users/ayham/base.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-          ];
-        };
+        #veta = nixpkgs.lib.nixosSystem {
+        #  inherit system;
+        #  specialArgs = attrs;
+        #  modules = commonModules ++ [
+        #    ./machines/veta/configuration.nix
+        #    ./users/ayham/base.nix
+        #    home-manager.nixosModules.home-manager
+        #    {
+        #      home-manager.useGlobalPkgs = true;
+        #      home-manager.useUserPackages = true;
+        #    }
+        #  ];
+        #};
 
         gamma = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = attrs;
           modules = commonModules ++ [
             ./machines/gamma/configuration.nix
             ./users/ayham/base.nix
@@ -69,7 +72,14 @@
             }
           ];
         };
-
+      };
+      homeConfigurations = {
+        "ayham" = home-manager.lib.homeManagerConfiguration {
+          inherit system;
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          specialArgs = attrs;
+          modules = commonModules ++ [ ./users/ayham/home.nix ];
+        };
       };
     };
 }

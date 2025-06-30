@@ -1,8 +1,5 @@
 { config, pkgs, lib, ... }: {
-  virtualisation.libvirtd = {
-    enable = true;
-    socketActivated = true;
-  };
+  virtualisation.libvirtd = { enable = true; };
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer

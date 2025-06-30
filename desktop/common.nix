@@ -9,6 +9,6 @@
     bitwarden
     bitwarden-cli
     mpv
-    thunar
+    xfce.thunar
   ];
 }

@@ -12,12 +12,7 @@
       sensibleOnTop = false;
       aggressiveResize = false;
 
-      plugins = with pkgs.tmuxPlugins; [
-        tpm
-        tmux-sensible
-        tmux-sessionist
-        tmux-pain-control
-      ];
+      plugins = with pkgs.tmuxPlugins; [ sensible sessionist pain-control ];
 
       extraConfig = ''
         # Disable bells

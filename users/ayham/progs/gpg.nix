@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ <home-manager/nixos> ];
-
+{ config, pkgs, lib, home-manager, ... }: {
   programs.ssh.startAgent = false;
   home-manager.users.ayham = { pkgs, ... }: {
     programs.gpg = {
@@ -13,7 +11,7 @@
       enableBashIntegration = true;
       enableSshSupport = true;
       grabKeyboardAndMouse = true;
-      pinentryFlavor = "gtk2";
+      pinentryPackage = pkgs.gtk2;
       sshKeys = [ "41FE9D7D43999B0A0344E4F4900E1E1A3E142065" ];
     };
 

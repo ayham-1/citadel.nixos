@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ <home-manager/nixos> ];
-
+{ config, pkgs, lib, home-manager, ... }: {
   home-manager.users.ayham = { pkgs, ... }: {
     programs.kitty = {
       enable = true;

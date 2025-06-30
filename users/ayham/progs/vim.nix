@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ <home-manager/nixos> ];
-
+{ config, pkgs, lib, home-manager, ... }: {
   home-manager.users.ayham = { pkgs, ... }: {
     programs.vim = {
       enable = true;
@@ -14,48 +12,11 @@
         vim-polyglot
         vim-bracketed-paste
         vim-surround
-        vim-cpp-modern
         vim-lsp
         vim-lsp-settings
         asyncomplete-vim
         asyncomplete-lsp-vim
       ];
-
-      settings = {
-        number = true;
-        relativenumber = true;
-        expandtab = true;
-        shiftwidth = 4;
-        tabstop = 8;
-        softtabstop = 2;
-        autoindent = true;
-        smarttab = true;
-        ignorecase = false;
-        clipboard = "unnamed";
-        visualbell = true;
-        wrap = false;
-        ruler = true;
-        showmode = true;
-        history = 100;
-        mouse = "a";
-        timeoutlen = 1000;
-        ttimeoutlen = 50;
-        ttyfast = true;
-        backup = false;
-        swapfile = false;
-        writebackup = false;
-        hlsearch = true;
-        incsearch = true;
-        linebreak = true;
-        textwidth = 120;
-        colorcolumn = "121";
-        shortmess = "aoOtTI";
-        hidden = true;
-        wildmenu = true;
-        completeopt = "menuone,noinsert,noselect,preview";
-        filetype = "plugin";
-        syntax = "on";
-      };
 
       extraConfig = ''
         let mapleader=" "

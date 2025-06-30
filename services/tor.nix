@@ -7,7 +7,7 @@
 
     torsocks.enable = true;
   };
-  programs.tor-browser.enable = true;
+  #programs.tor-browser.enable = true;
 
   environment.systemPackages = with pkgs; [
     torsocks

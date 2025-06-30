@@ -1,11 +1,9 @@
-{ config, lib, pkgs, modulesPath, ... }: {
+{ config, lib, pkgs, modulesPath, nixos-hardware, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
 
-    <nixos-hardware/common/cpu/intel>
-    <nixos-hardware/common/cpu/intel/coffee-lake>
-    <nixos-hardware/common/gpu/amd/sea-islands>
-    <nixos-hardware/common/pc/ssd>
+    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-pc-ssd
   ];
 
   boot.initrd.availableKernelModules =
@@ -17,7 +15,6 @@
   boot.loader.grub = {
     enable = true;
     version = 2;
-    package = pkgs.grub;
     copyKernels = true;
     devices = [ ];
   };
@@ -53,7 +50,7 @@
   fileSystems."/boot" = {
     device = "/dev/mapper/boot";
     fsType = "ext4";
-    ptions = [ "defaults" ];
+    options = [ "defaults" ];
   };
   swapDevices = [ ];
 

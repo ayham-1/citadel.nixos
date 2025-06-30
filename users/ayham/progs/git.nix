@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ <home-manager/nixos> ];
-
+{ config, pkgs, lib, home-manager, ... }: {
   home-manager.users.ayham = { pkgs, ... }: {
     programs.git = {
       enable = true;
@@ -8,7 +6,6 @@
       userEmail = "me@ayham.xyz";
       signing.key = "8C38DD3A3030F8AEB8A9A2BC783F6DE277DA7BFF";
       signing.signByDefault = true;
-      delta.enable = true;
       diff-so-fancy.enable = true;
     };
   };

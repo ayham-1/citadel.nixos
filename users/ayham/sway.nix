@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ <home-manager/nixos> ];
+{ config, pkgs, lib, home-manager, ... }: {
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
@@ -23,7 +22,11 @@
   services.dbus.enable = true;
 
   home-manager.users.ayham = {
-    xdg.portal = { enable = true; };
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
+    home.stateVersion = "25.05";
 
     wayland.windowManager.sway = {
       enable = true;
@@ -45,19 +48,15 @@
           size = 10.0;
         };
         window = {
-          titlebar = {
-            border = 1;
-            padding = 1;
-          };
+          titlebar = true;
           border = 1;
         };
         input = {
-          "*" = { natural_scroll = false; };
           "type:keyboard" = {
             xkb_layout = "us,de";
             xkb_options = "caps:escape,grp:win_space_toggle";
-            repeat_delay = 150;
-            repeat_rate = 25;
+            repeat_delay = "150";
+            repeat_rate = "25";
           };
           "type:mouse" = {
             accel_profile = "flat";
@@ -70,7 +69,7 @@
           "type:touchpad" = {
             tap = "enabled";
             dwt = "enabled";
-            natural_scroll = "disabled";
+            natural_scroll = "false";
           };
           "type:tablet_pad" = { map_to_output = "HDMI-A-1"; };
           "type:tablet_tool" = { map_to_output = "HDMI-A-1"; };
@@ -94,66 +93,6 @@
           tray_output HDMI-A-1
         }
       '';
-    };
-  };
-
-  home-manager.users.ayham = {
-    programs.i3status = {
-      enable = true;
-      config = {
-        general = {
-          colors = true;
-          interval = 1;
-          output_format = "i3bar";
-        };
-
-        order = [
-          "ipv6"
-          "disk /"
-          "wireless _first_"
-          "ethernet _first_"
-          "memory"
-          "cpu_usage"
-          "load"
-          "battery 0"
-          "tztime local"
-        ];
-
-        "wireless _first_" = {
-          format_up = "W: (%quality at %essid) %ip";
-          format_down = "W: down";
-        };
-
-        "ethernet _first_" = {
-          format_up = "E: %ip (%speed)";
-          format_down = "E: down";
-        };
-
-        "tztime local" = { format = "%A, %d.%m.%Y %H:%M:%S"; };
-
-        cpu_usage = { format = "CPU: %usage"; };
-
-        load = { format = "%5min"; };
-
-        memory = {
-          format = "%used";
-          threshold_degraded = "10%";
-          format_degraded = "MEMORY: %free";
-        };
-
-        "battery 0" = {
-          format = "%status %percentage %remaining";
-          format_down = "";
-          status_chr = "CHR";
-          status_bat = "BAT";
-          status_unk = "UNK";
-          status_full = "FULL";
-          path = "/sys/class/power_supply/BAT%d/uevent";
-          low_threshold = 10;
-        };
-
-        "disk /" = { format = "%free"; };
-      };
     };
   };
   programs.gamemode.enable = true;

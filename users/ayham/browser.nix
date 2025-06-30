@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ <home-manager/nixos> ];
-
+{ config, pkgs, lib, home-manager, ... }: {
   home-manager.users.ayham = {
     programs.librewolf = {
       enable = true;
@@ -18,19 +16,8 @@
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
       };
     };
-  };
 
-  # Brave installation and config
-  home.packages = with pkgs; [ brave ];
-
-  # Disable Brave Wallet & new tab content using dconf / policy JSON
-  xdg.configFile."brave/policies/managed/policies.json".text = builtins.toJSON {
-    "WalletEnabled" = false;
-    "NewTabPageShowBackgroundImage" = false;
-    "NewTabPageShowSponsoredTopSites" = false;
-    "NewTabPageShowSponsoredCards" = false;
-    "NewTabPageShowClock" = false;
-    "NewTabPageShowQuote" = false;
-    "NewTabPageURL" = "about:blank";
+    # Brave installation and config
+    home.packages = with pkgs; [ brave ];
   };
 }
