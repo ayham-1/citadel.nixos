@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, ... }: {
+{ config, pkgs, lib, home-manager, stylix, ... }: {
   home-manager.users.ayham = {
     programs.librewolf = {
       enable = true;
@@ -16,6 +16,7 @@
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
       };
     };
+    stylix.targets.librewolf.profileNames = [ "lwolf" ];
 
     # Brave installation and config
     home.packages = with pkgs; [ brave ];

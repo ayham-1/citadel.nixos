@@ -17,6 +17,9 @@
     \4
   '';
 
+  # tailscale for all!
+  services.tailscale.enable = true;
+
   # centrally manage users
   users.mutableUsers = false;
 
