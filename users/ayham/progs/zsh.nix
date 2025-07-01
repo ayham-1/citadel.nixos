@@ -1,15 +1,29 @@
-{ config, pkgs, ... }: {
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh.enable = true;
-    shellAliases = {
-      myip = "curl ipinfo.io/ip";
-      ide = "nix run --refresh github:ayham-1/ide";
+{ config, pkgs, home-manager, ... }: {
+  programs.zsh.enable = true;
+  environment.systemPackages = with pkgs; [ fzf gnupg oh-my-zsh ];
+
+  home-manager.users.ayham = { pkgs, ... }: {
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestion = {
+        enable = true;
+        strategy = [ "completion" "history" ];
+      };
+      syntaxHighlighting.enable = true;
+      defaultKeymap = "viins";
+      autocd = true;
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" "sudo" "thefuck" "gpg-agent" "shrink-path" ];
+      };
+      shellAliases = {
+        myip = "curl ipinfo.io/ip";
+        ll = "ls -l";
+        update = "sudo nixos-rebuild switch";
+        ide = "nix run --refresh github:ayham-1/ide";
+      };
+      history.size = 10000;
     };
   };
-
-  environment.systemPackages = with pkgs; [ fzf gnupg oh-my-zsh ];
 }
