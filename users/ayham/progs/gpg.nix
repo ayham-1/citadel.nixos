@@ -1,30 +1,27 @@
-{ config, pkgs, lib, home-manager, ... }: {
-  programs.ssh.startAgent = false;
+{ config, pkgs, lib, home-manager, ... }: 
+let keyId = "41FE9D7D43999B0A0344E4F4900E1E1A3E142065"; in {
+  programs.ssh.startAgent = true;
+  services.pcscd.enable = true;
   home-manager.users.ayham = { pkgs, ... }: {
     programs.gpg = {
       enable = true;
       mutableKeys = true;
     };
+    home.packages = with pkgs; [ gnupg pinentry-all wayprompt ];
 
     services.gpg-agent = {
       enable = true;
       enableBashIntegration = true;
       enableSshSupport = true;
       grabKeyboardAndMouse = true;
-      pinentry.package = pkgs.gtk2;
-      sshKeys = [ "41FE9D7D43999B0A0344E4F4900E1E1A3E142065" ];
-    };
-
-    home.sessionVariables = {
-      SSH_AUTH_SOCK = "$(gpgconf --list-dirs agent-ssh-socket)";
-      GPG_TTY = "$(tty)";
-    };
-
-    home.activation = {
-      initGPG = ''
-        gpgconf --kill gpg-agent
-        gpg-connect-agent updatestartuptty /bye >/dev/null
-      '';
+      pinentryPackage = pkgs.wayprompt;
+      sshKeys = [ "${keyId}" ];
     };
   };
+
+  programs.gnupg = {
+    agent.enable = true;
+    agent.pinentryPackage = pkgs.wayprompt;
+  };
+  environment.systemPackages = with pkgs; [ gnupg pinentry-all wayprompt ];
 }

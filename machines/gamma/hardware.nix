@@ -14,12 +14,6 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  boot.loader.grub = {
-    enable = true;
-    copyKernels = true;
-    devices = [ ];
-  };
-
   boot.initrd.luks.devices = {
     boot = { device = "/dev/sda1"; };
 

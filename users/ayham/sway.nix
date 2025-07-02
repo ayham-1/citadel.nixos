@@ -15,11 +15,10 @@
       xdg-desktop-portal
       xdg-desktop-portal-wlr
       waybar
+      dmenu
+      wmenu
     ];
   };
-  security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  services.dbus.enable = true;
 
   home-manager.users.ayham = {
     xdg.portal = {
@@ -56,8 +55,8 @@
           "type:keyboard" = {
             xkb_layout = "us,de";
             xkb_options = "caps:escape,grp:win_space_toggle";
-            repeat_delay = "150";
-            repeat_rate = "25";
+            repeat_delay = "300";
+            repeat_rate = "50";
           };
           "type:mouse" = {
             accel_profile = "flat";
@@ -87,12 +86,6 @@
         export _JAVA_AWT_WM_NONREPARENTING=1
       '';
       extraConfig = ''
-        bar {
-          status_command i3status
-          mode hide
-          position bottom
-          tray_output HDMI-A-1
-        }
       '';
     };
   };

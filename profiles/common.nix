@@ -1,21 +1,19 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, sops-nix, ... }: {
   imports = [
     ../services/grub.nix
     ../services/ntp.nix
     ../services/dns.nix
     ../services/localization.nix
+
+    sops-nix.nixosModules.sops
   ];
 
   # initial root password
-  users.users.root.initialPassword = "nixos";
+  sops.secrets.root-password.neededForUsers = true;
+  users.users.root.hashedPasswordFile = config.sops.secrets.root-password.path;
 
   # mount tmpfs on /tmp
   boot.tmp.useTmpfs = true;
-
-  # show IP on login screen
-  environment.etc."issue.d/ip.issue".text = ''
-    \4
-  '';
 
   # tailscale for all!
   services.tailscale.enable = true;
@@ -57,6 +55,9 @@
     macchanger
     vim
     gnupg
+    sops
+    age
+    ssh-to-age
   ];
 
   programs.bash.completion.enable = true;

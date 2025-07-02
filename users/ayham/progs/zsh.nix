@@ -1,6 +1,6 @@
 { config, pkgs, home-manager, ... }: {
   programs.zsh.enable = true;
-  environment.systemPackages = with pkgs; [ fzf gnupg oh-my-zsh ];
+  environment.systemPackages = with pkgs; [ fzf gnupg oh-my-zsh thefuck ];
 
   home-manager.users.ayham = { pkgs, ... }: {
     programs.zsh = {

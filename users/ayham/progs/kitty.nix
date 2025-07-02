@@ -11,7 +11,7 @@
       };
       shellIntegration.enableBashIntegration = true;
       shellIntegration.enableZshIntegration = true;
-      themeFile = "Modus Vivendi";
+      #themeFile = "Modus Vivendi";
     };
   };
 }
