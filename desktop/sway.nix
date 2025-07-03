@@ -1,4 +1,5 @@
 { config, pkgs, ... }: {
+  programs.sway = { enable = true; };
   environment.systemPackages = with pkgs; [
     sway
     swaybg
@@ -10,14 +11,22 @@
     slurp
     wl-clipboard
     kitty
+    wdisplays
+    qt5.qtwayland
+    swappy
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+    waybar
+    dmenu
+    wmenu
   ];
 
   services.seatd.enable = true;
   services.dbus.enable = true;
   security.polkit.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";

@@ -6,6 +6,7 @@
     ../../profiles/dev-tools.nix
     ../../profiles/security.nix
     ../../profiles/office.nix
+    ../../profiles/secrets.nix
 
     ../../desktop/common.nix
     ../../desktop/sound.nix

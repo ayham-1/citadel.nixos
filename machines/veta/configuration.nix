@@ -6,6 +6,7 @@
     ../../profiles/dev-tools.nix
     ../../profiles/security.nix
     ../../profiles/office.nix
+    ../../profiles/secrets.nix
 
     ../../desktop/common.nix
     ../../desktop/sound.nix
@@ -18,7 +19,7 @@
     ../../services/ssh-server.nix
     ../../services/dns.nix
     ../../services/ntp.nix
-    ../../services/virt.nix
+    #../../services/virt.nix
     ../../services/wifi.nix
     ../../services/fonts.nix
     ../../services/power.nix

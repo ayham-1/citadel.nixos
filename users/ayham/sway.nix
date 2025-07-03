@@ -1,24 +1,4 @@
 { config, pkgs, lib, home-manager, ... }: {
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [
-      swaylock
-      swayidle
-      wl-clipboard
-      tofi
-      mako
-      wdisplays
-      qt5.qtwayland
-      grim
-      slurp
-      swappy
-      xdg-desktop-portal
-      xdg-desktop-portal-wlr
-      waybar
-      dmenu
-      wmenu
-    ];
-  };
 
   home-manager.users.ayham = {
     xdg.portal = {
@@ -26,17 +6,64 @@
       configPackages = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-wlr ];
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
-    home.stateVersion = "25.05";
 
-    wayland.windowManager.sway = {
+    programs.swaylock.enable = true;
+
+    wayland.windowManager.sway = let
+      mod = "Mod4";
+      terminal = "kitty";
+      menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
+      screenshot = ''grim -g "$(slurp)" - | swappy -f'';
+      lock = "swaylock";
+
+      left = "h";
+      down = "j";
+      up = "k";
+      right = "l";
+    in {
       enable = true;
-      wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
-      config = rec {
-        modifier = "Mod4";
-        terminal = "kitty";
-        menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
+      swaynag.enable = true;
+      wrapperFeatures.gtk = true;
+      config = {
+        modifier = "${mod}";
+        terminal = "${terminal}";
+        menu = "${menu}";
         focus.followMouse = "always";
-        floating.modifier = "Mod4";
+        floating = {
+          modifier = "${mod}";
+          titlebar = false;
+          criteria = [
+            { app_id = ".*wl_mirror"; }
+            { app_id = "mpv"; }
+            { app_id = "qt5ct"; }
+            { app_id = "qt6ct"; }
+            { app_id = "wdisplays"; }
+            { app_id = "xdg-desktop-portal-gtk"; }
+            { app_id = "xdg-desktop-portal-wlr"; }
+            { app_id = "xdg-desktop-portal"; }
+            { app_id = "wayprompt"; }
+            { instance = "lxappearance"; }
+          ];
+        };
+        keybindings = lib.mkOptionDefault {
+          "${mod}+u" = "exec ${menu}";
+          "${mod}+Shift+d" = "exec ${screenshot}";
+          "${mod}+Shift+s" = "exec ${lock}";
+          "${mod}+Shift+p" = "exec systemctl suspend & ${lock}";
+          "$mod+Shift+q" =
+            "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
+
+        };
+        modes = {
+          resize = {
+            Escape = "mode default";
+            Return = "mode default";
+            "${down}" = "resize grow height 5 px or 5 ppt";
+            "${left}" = "resize shrink width 5 px or 5 ppt";
+            "${right}" = "resize grow width 5 px or 5 ppt";
+            "${up}" = "resize shrink height 5 px or 5 ppt";
+          };
+        };
         gaps = {
           inner = 5;
           outer = 5;
@@ -50,6 +77,11 @@
         window = {
           titlebar = true;
           border = 1;
+          hideEdgeBorders = "smart";
+          commands = [{
+            command = "floating enable, sticky enable";
+            criteria = { title = "Picture-in-Picture"; };
+          }];
         };
         input = {
           "type:keyboard" = {
@@ -62,7 +94,7 @@
             accel_profile = "flat";
             pointer_accel = "0.5";
           };
-          "TrackBall" = {
+          "*TrackBall*" = {
             accel_profile = "flat";
             pointer_accel = "0";
           };
@@ -85,8 +117,7 @@
         # use this if they aren't displayed properly:
         export _JAVA_AWT_WM_NONREPARENTING=1
       '';
-      extraConfig = ''
-      '';
+      extraConfig = "";
     };
   };
   programs.gamemode.enable = true;
