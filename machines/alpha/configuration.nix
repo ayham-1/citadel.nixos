@@ -7,6 +7,7 @@
     ../../profiles/security.nix
     ../../profiles/office.nix
     ../../profiles/secrets.nix
+    ../../profiles/impermanence.nix
 
     ../../desktop/common.nix
     ../../desktop/sound.nix

@@ -17,6 +17,7 @@
 
   # tailscale for all!
   services.tailscale.enable = true;
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   # centrally manage users
   users.mutableUsers = false;

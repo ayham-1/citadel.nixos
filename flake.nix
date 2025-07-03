@@ -19,10 +19,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nur, flake-utils, home-manager
-    , nixos-hardware, stylix, sops-nix, ... }@attrs:
+    , nixos-hardware, stylix, sops-nix, impermanence, ... }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
