@@ -69,6 +69,13 @@
     umount /btrfs_tmp
   '';
 
+  fileSystems."/nix" = {
+    device = "/dev/mapper/root";
+    neededForBoot = true;
+    fsType = "btrfs";
+    options = [ "subvol=nix" ];
+  };
+
   fileSystems."/persistent" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
