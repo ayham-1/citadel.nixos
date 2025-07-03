@@ -73,14 +73,14 @@
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = [ "subvol=nix" "noatime" "compress=zstd" "ssd" ];
   };
 
   fileSystems."/persistent" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=persistent" ];
+    options = [ "subvol=persistent" "noatime" "compress=zstd" "ssd" ];
   };
 
   fileSystems."/home" = {
