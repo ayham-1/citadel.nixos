@@ -9,6 +9,7 @@
         enable_audio_bell = false;
         update_check_interval = 0;
       };
+      font.size = lib.mkDefault 10;
       shellIntegration.enableBashIntegration = true;
       shellIntegration.enableZshIntegration = true;
       #themeFile = "Modus Vivendi";

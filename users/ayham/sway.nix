@@ -13,7 +13,7 @@
       mod = "Mod4";
       terminal = "kitty";
       menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
-      screenshot = ''grim -g "$(slurp)" - | swappy -f'';
+      screenshot = ''grim -g "$(slurp)" - | swappy -f -'';
       lock = "swaylock";
 
       left = "h";
@@ -54,9 +54,8 @@
           "${mod}+Shift+c" = "kill";
           "${mod}+Shift+r" = "reload";
           "${mod}+Shift+f" = "floating toggle";
-          "${mod}+Shift+q" =
-            "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
-
+          "XF86MonBrightnessUp" = "exec light -A 5";
+          "XF86MonBrightnessDown" = "exec light -U 5";
         };
         modes = {
           resize = {
@@ -127,10 +126,17 @@
     programs.waybar = {
       enable = true;
 
+      style = ''
+        * {
+          font-size: 10px;
+          min-height: 0;
+        }
+     '';
+
       settings.mainBar = {
         layer = "top";
         position = "top";
-        height = 14;
+        height = 15;
         ipc = "true";
         bar_id = "bar-0";
 
