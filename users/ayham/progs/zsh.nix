@@ -23,6 +23,9 @@
         update = "sudo nixos-rebuild switch";
         ide = "nix run --refresh github:ayham-1/ide";
       };
+      loginExtra = "
+        bindkey -v
+      ";
       history.size = 10000;
     };
   };

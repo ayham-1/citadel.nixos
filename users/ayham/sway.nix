@@ -45,12 +45,16 @@
             { instance = "lxappearance"; }
           ];
         };
+        bars = [{command = "waybar"; position = "top"; mode = "hide";}];
         keybindings = lib.mkOptionDefault {
           "${mod}+u" = "exec ${menu}";
           "${mod}+Shift+d" = "exec ${screenshot}";
           "${mod}+Shift+s" = "exec ${lock}";
           "${mod}+Shift+p" = "exec systemctl suspend & ${lock}";
-          "$mod+Shift+q" =
+          "${mod}+Shift+c" = "kill";
+          "${mod}+Shift+r" = "reload";
+          "${mod}+Shift+f" = "floating toggle";
+          "${mod}+Shift+q" =
             "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
         };
@@ -118,6 +122,37 @@
         export _JAVA_AWT_WM_NONREPARENTING=1
       '';
       extraConfig = "";
+    };
+
+    programs.waybar = {
+      enable = true;
+
+      settings.mainBar = {
+        layer = "top";
+        position = "top";
+        height = 14;
+        ipc = "true";
+        bar_id = "bar-0";
+
+        modules-left = [ "sway/workspaces" ];
+        modules-center = [ "sway/window" ];
+        modules-right = [
+          "network"
+          "cpu"
+          "memory"
+          "battery"
+          "pulseaudio"
+          "clock"
+        ];
+
+        clock.format = "{:%H:%M}";
+        cpu.format = "CPU {usage}%";
+        memory.format = "RAM {}%";
+        battery.format = "BAT {capacity}%";
+        pulseaudio.format = "VOL {volume}%";
+        network.format-wifi = "WiFi {essid}";
+        network.format-ethernet = "LAN {ifname}";
+      };
     };
   };
   programs.gamemode.enable = true;

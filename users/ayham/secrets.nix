@@ -11,7 +11,7 @@
       };
       "private_keys/ayham-gpg" = {
         mode = "0400";
-        path = "/run/secrets/ayham-gpg.asc";
+        path = "/home/ayham/.gnupg/ayham-gpg.asc";
         owner = config.users.users.ayham.name;
         group = config.users.users.ayham.group;
       };

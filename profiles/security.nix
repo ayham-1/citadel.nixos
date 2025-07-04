@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }: {
-  #imports = [ "${nixpkgs}/nixos/modules/profiles/hardened.nix" ];
   environment.memoryAllocator.provider = "libc";
 
   # Setup firewall
@@ -8,13 +7,15 @@
 
   # Apparmor
   security.apparmor.enable = true;
-  security.audit.enable = true;
-  security.auditd.enable = true;
-  security.chromiumSuidSandbox.enable = true;
+  security.apparmor.packages = with pkgs; [ apparmor-profiles roddhjav-apparmor-rules ];
+  services.dbus.apparmor = "enabled";
 
   # General Hardening
   security.forcePageTableIsolation = true;
   security.sudo.enable = true;
+  security.audit.enable = true;
+  security.auditd.enable = true;
+  security.chromiumSuidSandbox.enable = true;
 
   # Kernel Hardening
   boot.kernelPackages = pkgs.linuxPackages_hardened;

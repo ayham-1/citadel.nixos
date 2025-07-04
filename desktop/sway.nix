@@ -19,6 +19,7 @@
     waybar
     dmenu
     wmenu
+    kanshi
   ];
 
   services.seatd.enable = true;
@@ -27,6 +28,16 @@
   security.pam.services.swaylock = { };
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.swaylock = { };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "greeter";
+      };
+    };
+  };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";

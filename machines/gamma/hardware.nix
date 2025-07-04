@@ -14,8 +14,10 @@
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/efi";
   boot.loader.grub = {
     enable = true;
+    enableCryptodisk = true;
     efiSupport = true;
     efiInstallAsRemovable = false;
     devices = [ "nodev" ]; # UEFI-only boot (no MBR)
@@ -24,6 +26,7 @@
   boot.initrd.luks.devices = {
     boot = {
       device = "/dev/sda2";
+      preLVM = true;
       allowDiscards = true;
     };
 
