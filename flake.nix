@@ -52,6 +52,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = null;
               home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];
@@ -67,6 +68,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = null;
               home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];
@@ -82,6 +84,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = null;
               home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];

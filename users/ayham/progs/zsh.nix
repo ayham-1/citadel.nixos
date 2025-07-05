@@ -19,11 +19,11 @@
       };
       shellAliases = {
         myip = "curl ipinfo.io/ip";
-        ll = "ls -l";
+        ll = "ls -al";
         update = "sudo nixos-rebuild switch";
         ide = "nix run --refresh github:ayham-1/ide";
       };
-      loginExtra = "
+      profileExtra = "
         bindkey -v
       ";
       history.size = 10000;
