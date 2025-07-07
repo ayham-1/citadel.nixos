@@ -1,11 +1,14 @@
 - nixos stuff
-    - [ ] /home impermenance
     - [ ] modulize nixos profiles
+    - [ ] /home impermenance
     - [ ] common partition setup
     - [ ] diskio
     - [ ] remote redeployment of machines
     - [ ] configure icons
     - [ ] configure ISO
+    - [ ] import all scripts
+    - [ ] setup common wifi configurations
+    - [x] mac randomization
 
 - progs
     - [ ] spicetify
@@ -19,6 +22,20 @@
         - [ ] bitwarden integration
     - [ ] nb
     - [ ] brave/chromium
+    - [ ] automatically configure tailscale for each machine
+    - [ ] please fix zsh not doing vim FFS
+    - [ ] keepassxc
+
+- nixos homelab
+    - [ ] game servers
+        - [ ] minecraft
+        - [ ] cookie clicker?
+        - [ ] terraria?
+    - [ ] vaultwarden
+    - [ ] headscale
+    - [ ] git
+    - [ ] mozilla account for bookmarks
+    - [ ] email server
 
 - misc
     - [ ] force format repo

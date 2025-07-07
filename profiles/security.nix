@@ -23,11 +23,15 @@
   security.polkit.enable = true;
   security.lockKernelModules = true;
 
+  # Network Hardening
+  networking.networkmanager.ethernet.macAddress = "permanent";
+  networking.networkmanager.wifi.macAddress = "random";
+
   # Isolate
   security.isolate.enable = true;
 
   # Kernel Hardening
-  boot.kernelPackages = pkgs.linuxPackages_hardened;
+  #boot.kernelPackages = pkgs.linuxPackages_hardened; # causes problems with hardware
   security.protectKernelImage = true;
   boot.kernelParams = [
     "slub_debug=FZP"
