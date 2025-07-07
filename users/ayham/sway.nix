@@ -1,5 +1,4 @@
-{ config, pkgs, lib, home-manager, ... }: {
-
+{ config, pkgs, lib, home-manager, stylix, ... }: {
   home-manager.users.ayham = {
     xdg.portal = {
       enable = true;
@@ -48,7 +47,15 @@
             { instance = "lxappearance"; }
           ];
         };
-        bars = [{command = "waybar"; position = "top"; mode = "hide";}];
+        bars = [({
+          mode = "hide";
+          hiddenState = "hide";
+          position = "top";
+          workspaceButtons = true;
+          workspaceNumbers = false;
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+          trayOutput = "primary";
+        })];
         keybindings = lib.mkOptionDefault {
           "${mod}+u" = "exec ${menu}";
           "${mod}+Shift+d" = "exec ${screenshot}";
@@ -126,41 +133,42 @@
       extraConfig = "";
     };
 
-    programs.waybar = {
+    programs.i3status-rust = {
       enable = true;
-
-      style = ''
-        * {
-          font-size: 10px;
-          min-height: 0;
-        }
-     '';
-
-      settings.mainBar = {
-        layer = "top";
-        position = "top";
-        height = 15;
-        ipc = "true";
-        bar_id = "bar-0";
-
-        modules-left = [ "sway/workspaces" ];
-        modules-center = [ "sway/window" ];
-        modules-right = [
-          "network"
-          "cpu"
-          "memory"
-          "battery"
-          "pulseaudio"
-          "clock"
-        ];
-
-        clock.format = "{:%H:%M}";
-        cpu.format = "CPU {usage}%";
-        memory.format = "RAM {}%";
-        battery.format = "BAT {capacity}%";
-        pulseaudio.format = "VOL {volume}%";
-        network.format-wifi = "WiFi {essid}";
-        network.format-ethernet = "LAN {ifname}";
+      bars = {
+        default = {
+          blocks = [{
+              alert = 10.0;
+              block = "disk_space";
+              info_type = "available";
+              interval = 60;
+              path = "/";
+              warning = 20.0;
+            }
+            {
+              block = "memory";
+              format = " $icon mem_used_percents ";
+              format_alt = " $icon $swap_used_percents ";
+            }
+            {
+              block = "cpu";
+              interval = 1;
+            }
+            {
+              block = "load";
+              format = " $icon $1m ";
+              interval = 1;
+            }
+            {
+              block = "sound";
+            }
+            {
+              block = "time";
+              format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+              interval = 60;
+            }
+          ];
+        };
       };
     };
   };

@@ -1,6 +1,4 @@
 { config, pkgs, lib, stylix, ... }: {
-  imports = [ stylix.nixosModules.stylix ];
-
   # enable brightness control
   programs.light.enable = true;
 
@@ -25,6 +23,11 @@
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
       emoji = config.stylix.fonts.monospace;
+    };
+    cursor = {
+      package = pkgs.banana-cursor;
+      size = 24;
+      name = "Banana";
     };
     polarity = "dark";
   };

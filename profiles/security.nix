@@ -1,4 +1,6 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, aa-alias-manager, ... }: {
+  imports = [ aa-alias-manager.nixosModules.default ];
+
   environment.memoryAllocator.provider = "libc";
 
   # Setup firewall
@@ -8,6 +10,7 @@
   # Apparmor
   security.apparmor.enable = true;
   security.apparmor.packages = with pkgs; [ apparmor-profiles roddhjav-apparmor-rules ];
+  security.apparmor.aa-alias-manager.enable = true;
   services.dbus.apparmor = "enabled";
 
   # General Hardening
@@ -15,7 +18,13 @@
   security.sudo.enable = true;
   security.audit.enable = true;
   security.auditd.enable = true;
+  security.rtkit.enable = true;
   security.chromiumSuidSandbox.enable = true;
+  security.polkit.enable = true;
+  security.lockKernelModules = true;
+
+  # Isolate
+  security.isolate.enable = true;
 
   # Kernel Hardening
   boot.kernelPackages = pkgs.linuxPackages_hardened;

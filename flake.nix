@@ -19,11 +19,15 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    aa-alias-manager = {
+      url = "github:LordGrimmauld/aa-alias-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nur, flake-utils, home-manager
-    , nixos-hardware, stylix, sops-nix, impermanence, ... }@attrs:
+    , nixos-hardware, stylix, sops-nix, impermanence, aa-alias-manager, ... }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,6 +39,7 @@
         config.allowUnfree = true;
       };
       commonModules = [
+        stylix.nixosModules.stylix
         nur.modules.nixos.default
         ({ pkgs, ... }: {
           nixpkgs.overlays = [ (final: prev: { unstable = unstablePkgs; }) ];

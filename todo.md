@@ -1,0 +1,24 @@
+- nixos stuff
+    - [ ] /home impermenance
+    - [ ] modulize nixos profiles
+    - [ ] common partition setup
+    - [ ] diskio
+    - [ ] remote redeployment of machines
+    - [ ] configure icons
+    - [ ] configure ISO
+
+- progs
+    - [ ] spicetify
+    - [ ] htop
+    - [ ] vim
+    - [ ] neovim
+    - [ ] steam
+    - [ ] thunar
+    - [ ] rofi
+        - [ ] booksmarks integration
+        - [ ] bitwarden integration
+    - [ ] nb
+    - [ ] brave/chromium
+
+- misc
+    - [ ] force format repo
