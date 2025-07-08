@@ -12,6 +12,8 @@
     ./progs/zsh.nix
 
     ./sway.nix
+    ./i3status-rs.nix
+
     ./browser.nix
 
     ./secrets.nix

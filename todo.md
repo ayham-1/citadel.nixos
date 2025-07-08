@@ -9,8 +9,10 @@
     - [ ] import all scripts
     - [ ] setup common wifi configurations
     - [x] mac randomization
+    - [x] automatically configure tailscale for each machine
 
 - progs
+    - [ ] i3status
     - [ ] spicetify
     - [ ] htop
     - [ ] vim
@@ -22,7 +24,6 @@
         - [ ] bitwarden integration
     - [ ] nb
     - [ ] brave/chromium
-    - [ ] automatically configure tailscale for each machine
     - [ ] please fix zsh not doing vim FFS
     - [ ] keepassxc
 

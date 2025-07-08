@@ -17,6 +17,7 @@
 
   # tailscale for all!
   services.tailscale.enable = true;
+  services.tailscale.authKeyFile = "/root/.tailscale.key";
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   # centrally manage users

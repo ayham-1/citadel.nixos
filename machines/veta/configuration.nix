@@ -35,5 +35,7 @@
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 
+  powerManagement.enable = true;
+
   system.stateVersion = "25.05";
 }
