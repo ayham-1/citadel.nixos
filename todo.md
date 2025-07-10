@@ -5,17 +5,19 @@
     - [ ] diskio
     - [ ] remote redeployment of machines
     - [ ] configure icons
+    - [ ] zram configure
     - [ ] configure ISO
     - [ ] import all scripts
     - [ ] setup common wifi configurations
+    - [ ] uni vpn
     - [x] mac randomization
     - [x] automatically configure tailscale for each machine
 
 - progs
+    - [ ] vim
     - [ ] i3status
     - [ ] spicetify
     - [ ] htop
-    - [ ] vim
     - [ ] neovim
     - [ ] steam
     - [ ] thunar

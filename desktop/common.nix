@@ -13,7 +13,19 @@
     xfce.thunar-archive-plugin
     xfce.thunar-volman
     tigervnc
+    libsForQt5.xp-pen-g430-driver
+    opentabletdriver
   ];
+
+  # drawing tablet thing
+  hardware.opentabletdriver.enable = true;
+  services.udev.packages = [
+    pkgs.opentabletdriver
+  ];
+  systemd.user.services.opentabletdriver = {
+  
+  #services.udev.packages = [ pkgs.digimend-udev-rules ];
+  #boot.extraModulePackages = with config.boot.kernelPackages; [ digimend ];
 
   # theme
   stylix = {

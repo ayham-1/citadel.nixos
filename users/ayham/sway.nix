@@ -116,8 +116,8 @@
             dwt = "enabled";
             natural_scroll = "false";
           };
-          "type:tablet_pad" = { map_to_output = "HDMI-A-1"; };
-          "type:tablet_tool" = { map_to_output = "HDMI-A-1"; };
+          #"type:tablet_pad" = { map_to_output = "HDMI-A-1"; };
+          #"type:tablet_tool" = { map_to_output = "HDMI-A-1"; };
         };
       };
       xwayland = true;
