@@ -55,13 +55,11 @@
           autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
         augroup END
 
-        " UI toggles
-        map <F1> :set number!<CR> :set relativenumber!<CR>
-        map <F4> :set list!<CR>
-        map <F5> :set cursorline!<CR>
-        map <F7> :set spell!<CR>
-        map <F12> :set fdm=indent<CR>
-        nmap <leader>2 :set paste<CR>i
+        " UI Settings
+        set number
+        set relativenumber
+        set cursorline
+        set spell
 
         " Arrow key discipline
         noremap <up> :echoerr "Umm, use k instead"<CR>

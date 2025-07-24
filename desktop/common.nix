@@ -15,6 +15,9 @@
     tigervnc
     libsForQt5.xp-pen-g430-driver
     opentabletdriver
+
+    dejavu_fonts
+    noto-fonts-emoji
   ];
 
   # drawing tablet thing
@@ -22,7 +25,6 @@
   services.udev.packages = [
     pkgs.opentabletdriver
   ];
-  systemd.user.services.opentabletdriver = {
   
   #services.udev.packages = [ pkgs.digimend-udev-rules ];
   #boot.extraModulePackages = with config.boot.kernelPackages; [ digimend ];
@@ -34,7 +36,10 @@
     fonts = {
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
-      emoji = config.stylix.fonts.monospace;
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
     };
     cursor = {
       package = pkgs.banana-cursor;

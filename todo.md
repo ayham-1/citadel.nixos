@@ -12,6 +12,7 @@
     - [ ] uni vpn
     - [x] mac randomization
     - [x] automatically configure tailscale for each machine
+    - [ ] maybe figure out what the fuck is happening with the tablet
 
 - progs
     - [ ] vim

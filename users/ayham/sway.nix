@@ -11,6 +11,7 @@
 
     services.mako.enable = true;
 
+    stylix.targets.sway.enable = true;
     wayland.windowManager.sway = let
       mod = "Mod4";
       terminal = "kitty";
@@ -47,15 +48,12 @@
             { instance = "lxappearance"; }
           ];
         };
-        bars = [({
+        bars = [{
           mode = "hide";
           hiddenState = "hide";
           position = "top";
-          workspaceButtons = true;
-          workspaceNumbers = false;
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-          trayOutput = "primary";
-        })];
+          command = "waybar";
+        }];
         keybindings = lib.mkOptionDefault {
           "${mod}+u" = "exec ${menu}";
           "${mod}+Shift+d" = "exec ${screenshot}";

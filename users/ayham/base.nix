@@ -2,7 +2,6 @@
   # only import globally essential programs
   imports = [
     ./progs/kitty.nix
-    ./progs/kitty.nix
     ./progs/steam.nix
     ./progs/git.nix
     ./progs/gpg.nix
@@ -12,7 +11,7 @@
     ./progs/zsh.nix
 
     ./sway.nix
-    ./i3status-rs.nix
+    ./waybar.nix
 
     ./browser.nix
 
@@ -36,6 +35,7 @@
       "lp"
       "adbusers"
       "seat"
+      "input"
     ];
     hashedPasswordFile = config.sops.secrets.ayham-password.path;
     shell = pkgs.zsh;

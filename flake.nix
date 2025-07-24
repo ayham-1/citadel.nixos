@@ -34,16 +34,16 @@
         inherit system;
         config.allowUnfree = true;
       };
-      unstablePkgs = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      #unstablePkgs = import nixpkgs-unstable {
+      #  inherit system;
+      #  config.allowUnfree = true;
+      #};
       commonModules = [
         stylix.nixosModules.stylix
         nur.modules.nixos.default
-        ({ pkgs, ... }: {
-          nixpkgs.overlays = [ (final: prev: { unstable = unstablePkgs; }) ];
-        })
+        #({ pkgs, ... }: {
+        #  nixpkgs.overlays = [ (final: prev: { unstable = unstablePkgs; }) ];
+        #})
       ];
     in {
       nixosConfigurations = {

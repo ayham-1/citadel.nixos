@@ -9,17 +9,20 @@
       open-sans
       twemoji-color-font
       liberation_ttf
+      noto-fonts
+      noto-fonts-emoji
+      font-awesome
     ];
 
     fontconfig = {
       enable = true;
       antialias = true;
-      defaultFonts = {
-        monospace = [ "Fira Mono" ];
-        serif = [ "Fira Serif" ];
-        sansSerif = [ "Fira Sans" ];
-        emoji = [ "Twitter Color Emoji" ];
-      };
+      #defaultFonts = {
+      #  monospace = [ "Fira Mono" ];
+      #  serif = [ "Fira Serif" ];
+      #  sansSerif = [ "Fira Sans" ];
+      #  emoji = [ "Twitter Color Emoji" ];
+      #};
     };
   };
 }
