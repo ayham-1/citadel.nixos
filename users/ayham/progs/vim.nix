@@ -60,6 +60,10 @@
         set relativenumber
         set cursorline
         set spell
+        set mouse=a
+
+        map <ScrollWheelUp> <C-Y>
+        map <ScrollWheelDown> <C-E>
 
         " Arrow key discipline
         noremap <up> :echoerr "Umm, use k instead"<CR>

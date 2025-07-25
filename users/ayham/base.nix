@@ -9,6 +9,7 @@
     ./progs/vim.nix
     ./progs/tmux.nix
     ./progs/zsh.nix
+    ./progs/rofi.nix
 
     ./sway.nix
     ./waybar.nix

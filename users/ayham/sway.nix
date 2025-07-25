@@ -15,7 +15,8 @@
     wayland.windowManager.sway = let
       mod = "Mod4";
       terminal = "kitty";
-      menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
+      #menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
+      menu = "rofi -show drun";
       screenshot = ''grim -g "$(slurp)" - | swappy -f -'';
       lock = "swaylock";
 
