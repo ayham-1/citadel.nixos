@@ -15,6 +15,7 @@
     tigervnc
     libsForQt5.xp-pen-g430-driver
     opentabletdriver
+    pciutils
 
     dejavu_fonts
     noto-fonts-emoji
@@ -25,11 +26,15 @@
   services.udev.packages = [
     pkgs.opentabletdriver
   ];
+
+  # magic FHS
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = pkgs.steam-run.args.multiPkgs pkgs;
   
   # theme
   stylix = {
     enable = true;
-    image = ../assets/wallpaper.jpg;
+    #image = ../assets/wallpaper.jpg;
     base16Scheme = {
       name = "Modus Vivendi";
 
