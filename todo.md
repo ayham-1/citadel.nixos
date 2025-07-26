@@ -13,14 +13,14 @@
     - [x] mac randomization
     - [x] automatically configure tailscale for each machine
     - [ ] maybe figure out what the fuck is happening with the tablet
+    - [ ] experiement with steam and hardening
 
 - progs
-    - [ ] vim
-    - [ ] i3status
     - [ ] spicetify
+    - [ ] vim
     - [ ] htop
     - [ ] neovim
-    - [ ] steam
+    - [x] steam
     - [ ] thunar
     - [ ] rofi
         - [ ] booksmarks integration

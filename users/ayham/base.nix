@@ -1,13 +1,7 @@
 { config, pkgs, lib, home-manager, sops-nix, ... }: {
-  # only import globally essential programs
   imports = [
-    ./progs/kitty.nix
-    ./progs/steam.nix
-    ./progs/git.nix
-    ./progs/gpg.nix
-    ./progs/ssh.nix
-    ./progs/vim.nix
-    ./progs/tmux.nix
+    ./progs/bundle.nix
+
     ./progs/zsh.nix
     ./progs/rofi.nix
 

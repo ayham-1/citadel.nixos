@@ -59,7 +59,7 @@
         set number
         set relativenumber
         set cursorline
-        set spell
+        "set spell
         set mouse=a
 
         map <ScrollWheelUp> <C-Y>

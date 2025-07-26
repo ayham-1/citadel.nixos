@@ -11,11 +11,11 @@
         strategy = [ "completion" "history" ];
       };
       syntaxHighlighting.enable = true;
-      defaultKeymap = "viins";
+      #defaultKeymap = "vicmd";
       autocd = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "sudo" "thefuck" "gpg-agent" "shrink-path" ];
+        plugins = [ "git" "sudo" "thefuck" "gpg-agent" "shrink-path" "vi-mode" ];
       };
       shellAliases = {
         myip = "curl ipinfo.io/ip";
@@ -23,9 +23,9 @@
         update = "sudo nixos-rebuild switch";
         ide = "nix run --refresh github:ayham-1/ide";
       };
-      profileExtra = "
-        bindkey -v
-      ";
+      initExtra = ''
+        export KEYTIMEOUT=1  # makes ESC response near-instant
+      '';
       history.size = 10000;
     };
   };

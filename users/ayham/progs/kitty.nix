@@ -12,7 +12,6 @@
       font.size = lib.mkDefault 10;
       shellIntegration.enableBashIntegration = true;
       shellIntegration.enableZshIntegration = true;
-      #themeFile = "Modus Vivendi";
     };
   };
 }
