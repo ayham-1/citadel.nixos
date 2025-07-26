@@ -8,7 +8,9 @@
     ./vim.nix
     ./tmux.nix
     ./zsh.nix
+    ./rofi.nix
   ];
 
+  # set defaults of optional Programs
   citadel.users.steam.enable = lib.mkDefault true;
 }

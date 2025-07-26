@@ -20,7 +20,6 @@
       shellAliases = {
         myip = "curl ipinfo.io/ip";
         ll = "ls -al";
-        update = "sudo nixos-rebuild switch";
         ide = "nix run --refresh github:ayham-1/ide";
       };
       initExtra = ''

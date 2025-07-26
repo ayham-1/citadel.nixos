@@ -1,12 +1,7 @@
 { config, pkgs, lib, home-manager, sops-nix, ... }: {
   imports = [
     ./progs/bundle.nix
-
-    ./progs/zsh.nix
-    ./progs/rofi.nix
-
-    ./sway.nix
-    ./waybar.nix
+    ./wm/bundle.nix
 
     ./browser.nix
 
