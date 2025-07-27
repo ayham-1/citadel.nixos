@@ -1,30 +1,36 @@
 { config, pkgs, lib, home-manager, stylix, ... }: {
-  home-manager.users.ayham = {
-    programs.librewolf = {
-      enable = true;
-      nativeMessagingHosts = [ pkgs.tridactyl-native ];
 
-      settings = {
-        "privacy.resistFingerprinting" = true;
-        "privacy.firstparty.isolate" = true;
-        "privacy.trackingprotection.enabled" = true;
-        "network.cookie.cookieBehavior" = 1; # Block 3rd-party cookies
-        "network.http.referer.XOriginPolicy" = 2;
-        "network.http.referer.XOriginTrimmingPolicy" = 2;
-        "webgl.disabled" = true;
-        "dom.security.https_only_mode" = true;
-        "extensions.pocket.enabled" = false;
-        "media.peerconnection.enabled" = false; # Disable WebRTC
-        "geo.enabled" = false;
-        "identity.fxaccounts.enabled" = true;
-        "browser.safebrowsing.enabled" = false; # Optional: turn off Google Safe Browsing
-        "browser.tabs.inTitlebar" = 0;
-        "sidebar.verticalTabs" = true;
-        "browser.compactmode.show" = true;
-        "browser.uidensity" = 1;
-        "extensions.autoDisableScopes" = 0;
-        "extensions.update.autoUpdateDefault" = false;
-        "extensions.update.enabled" = false;
+  options = {
+    citadel.users.browsers.librewolf.enable = lib.mkEnableOption "Citadel: Enables librewolf userconfig";
+  };
+
+  config = lib.mkIf config.citadel.users.browsers.librewolf.enable {
+    home-manager.users.ayham = {
+      programs.librewolf = {
+        enable = true;
+        nativeMessagingHosts = [ pkgs.tridactyl-native ];
+
+        settings = {
+          "privacy.resistFingerprinting" = true;
+          "privacy.firstparty.isolate" = true;
+          "privacy.trackingprotection.enabled" = true;
+          "network.cookie.cookieBehavior" = 1; # Block 3rd-party cookies
+          "network.http.referer.XOriginPolicy" = 2;
+          "network.http.referer.XOriginTrimmingPolicy" = 2;
+          "webgl.disabled" = true;
+          "dom.security.https_only_mode" = true;
+          "extensions.pocket.enabled" = false;
+          "media.peerconnection.enabled" = false; # Disable WebRTC
+          "geo.enabled" = false;
+          "identity.fxaccounts.enabled" = true;
+          "browser.safebrowsing.enabled" = false; # Optional: turn off Google Safe Browsing
+          "browser.tabs.inTitlebar" = 0;
+          "sidebar.verticalTabs" = true;
+          "browser.compactmode.show" = true;
+          "browser.uidensity" = 1;
+          "extensions.autoDisableScopes" = 0;
+          "extensions.update.autoUpdateDefault" = false;
+          "extensions.update.enabled" = false;
         #"browser.tabs.firefox-view" = false;
         #"app.normandy.first_run" = false;
         #"browser.ctrlTab.recentlyUsedOrder" = false;
@@ -155,7 +161,7 @@
         id = 0;
         name = "lwolf";
         isDefault = true;
-        
+
         settings = {
           "extensions.update.enabled" = false;
           "extensions.autoDisableScopes" = 0;
@@ -186,8 +192,6 @@
 
     stylix.targets.librewolf.profileNames = [ "lwolf" ];
     stylix.targets.firefox.profileNames = [ "lwolf" ];
-
-    # Brave installation and 'config'
-    home.packages = with pkgs; [ brave ];
   };
+};
 }

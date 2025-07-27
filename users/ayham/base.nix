@@ -3,7 +3,7 @@
     ./progs/bundle.nix
     ./wm/bundle.nix
 
-    ./browser.nix
+    ./browsers/bundle.nix
 
     ./secrets.nix
   ];
