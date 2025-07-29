@@ -6,8 +6,6 @@
     ./browsers/bundle.nix
 
     ./secrets.nix
-
-    ./vncserver.nix
   ];
 
   sops.secrets.ayham-password.neededForUsers = true;

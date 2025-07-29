@@ -14,6 +14,7 @@
     ../../desktop/sway.nix
 
     ../../services/nix.nix
+    ../../services/remote-desktop.nix
     ../../services/localization.nix
     ../../services/ssh.nix
     ../../services/ssh-server.nix
