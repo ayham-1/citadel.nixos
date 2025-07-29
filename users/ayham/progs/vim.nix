@@ -2,7 +2,7 @@
   home-manager.users.ayham = { pkgs, ... }: {
     programs.vim = {
       enable = true;
-      defaultEditor = true;
+      #defaultEditor = true;
 
       plugins = with pkgs.vimPlugins; [
         vim-ledger
@@ -14,6 +14,7 @@
         vim-surround
         vim-lsp
         vim-lsp-settings
+        vim-nix
         asyncomplete-vim
         asyncomplete-lsp-vim
       ];

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   imports = [
     ../../profiles/common.nix
     ../../profiles/communication.nix
@@ -28,4 +28,16 @@
 
     ./hardware.nix
   ];
+
+  options = {
+    citadel.machines.common.hostName = lib.mkOption {
+      type = lib.types.str;
+      default = "commonHostName";
+    };
+  };
+
+  config = {
+    networking.hostName = config.citadel.machines.common.hostName;
+    system.stateVersion = "25.05";
+  };
 }

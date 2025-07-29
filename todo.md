@@ -1,6 +1,5 @@
 - nixos stuff
-    - [ ] modulize nixos profiles
-    - [ ] /home impermenance
+    - [x] modulize nixos profiles
     - [ ] common partition setup
     - [ ] diskio
     - [ ] remote redeployment of machines
@@ -12,14 +11,14 @@
     - [ ] uni vpn
     - [x] mac randomization
     - [x] automatically configure tailscale for each machine
-    - [ ] maybe figure out what the fuck is happening with the tablet
     - [ ] experiement with steam and hardening
+    - [ ] /home impermenance
 
 - progs
     - [ ] spicetify
     - [ ] vim
     - [ ] htop
-    - [ ] neovim
+    - [x] neovim
     - [x] steam
     - [ ] thunar
     - [ ] rofi
