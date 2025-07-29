@@ -1,6 +1,6 @@
 - nixos stuff
     - [x] modulize nixos profiles
-    - [ ] common partition setup
+    - [x] common partition setup
     - [ ] diskio
     - [ ] remote redeployment of machines
     - [ ] configure icons
@@ -8,7 +8,7 @@
     - [ ] configure ISO
     - [ ] import all scripts
     - [x] setup common wifi configurations
-    - [ ] uni vpn
+    - [x] uni vpn
     - [x] mac randomization
     - [x] automatically configure tailscale for each machine
     - [ ] experiement with steam and hardening

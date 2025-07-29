@@ -16,6 +16,7 @@
     libsForQt5.xp-pen-g430-driver
     opentabletdriver
     pciutils
+    eduvpn-client
 
     dejavu_fonts
     noto-fonts-emoji
@@ -23,14 +24,15 @@
 
   # drawing tablet thing
   hardware.opentabletdriver.enable = true;
-  services.udev.packages = [
-    pkgs.opentabletdriver
-  ];
+  services.udev.packages = [ pkgs.opentabletdriver ];
 
   # magic FHS
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = pkgs.steam-run.args.multiPkgs pkgs;
-  
+
+  # sometimes, perfect is unachievable
+  services.flatpak.enable = true;
+
   # theme
   stylix = {
     enable = true;
@@ -64,9 +66,9 @@
       };
     };
     cursor = {
-      package = pkgs.banana-cursor;
-      size = 24;
-      name = "Banana";
+      package = pkgs.posy-cursors;
+      size = 12;
+      name = "Posy_Cursor_Black";
     };
     polarity = "dark";
   };

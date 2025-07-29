@@ -6,6 +6,8 @@
     ./browsers/bundle.nix
 
     ./secrets.nix
+
+    ./vncserver.nix
   ];
 
   sops.secrets.ayham-password.neededForUsers = true;
@@ -26,6 +28,7 @@
       "adbusers"
       "seat"
       "input"
+      "podman"
     ];
     hashedPasswordFile = config.sops.secrets.ayham-password.path;
     shell = pkgs.zsh;
