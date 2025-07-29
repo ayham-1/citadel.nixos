@@ -25,6 +25,7 @@
     ../../services/power.nix
     ../../services/earlyoom.nix
     ../../services/tor.nix
+    ../../services/wlans.nix
 
     ./hardware.nix
   ];

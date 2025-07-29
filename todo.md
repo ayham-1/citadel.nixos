@@ -7,7 +7,7 @@
     - [ ] zram configure
     - [ ] configure ISO
     - [ ] import all scripts
-    - [ ] setup common wifi configurations
+    - [x] setup common wifi configurations
     - [ ] uni vpn
     - [x] mac randomization
     - [x] automatically configure tailscale for each machine

@@ -11,7 +11,7 @@
   sops.secrets.ayham-password.neededForUsers = true;
 
   users.users.ayham = {
-    isNormalUser = true;
+    isNormalUser = true; # just makingg sure
     home = "/home/ayham";
     description = "ayham";
     extraGroups = [
