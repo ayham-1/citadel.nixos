@@ -23,6 +23,7 @@
     };
 
     formatter = { conform-nvim.enable = true; };
+    binds = { whichKey.enable = true; };
 
     options = {
       tabstop = 4;
