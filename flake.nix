@@ -24,28 +24,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+    nvf.url = "github:notashelf/nvf";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nur, flake-utils, home-manager
-    , nixos-hardware, stylix, sops-nix, impermanence, aa-alias-manager, ... }@attrs:
+    , nixos-hardware, stylix, sops-nix, impermanence, aa-alias-manager, nvf, ...
+    }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      #unstablePkgs = import nixpkgs-unstable {
-      #  inherit system;
-      #  config.allowUnfree = true;
-      #};
       commonModules = [
         stylix.nixosModules.stylix
         nur.modules.nixos.default
-        #({ pkgs, ... }: {
-        #  nixpkgs.overlays = [ (final: prev: { unstable = unstablePkgs; }) ];
-        #})
+        nvf.nixosModules.default
       ];
     in {
+      # neovim
+      packages."x86_64-linux".default = (nvf.lib.neovimConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [ ./users/ayham/progs/nvf.nix ];
+      }).neovim;
+
       nixosConfigurations = {
         alpha = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -95,13 +97,5 @@
           ];
         };
       };
-      #homeConfigurations = {
-      #  "ayham" = home-manager.lib.homeManagerConfiguration {
-      #    inherit system;
-      #    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      #    specialArgs = attrs;
-      #    modules = commonModules ++ [ ./users/ayham/home.nix ];
-      #  };
-      #};
     };
 }
