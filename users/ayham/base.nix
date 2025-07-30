@@ -27,6 +27,7 @@
       "seat"
       "input"
       "podman"
+      "dailout"
     ];
     hashedPasswordFile = config.sops.secrets.ayham-password.path;
     shell = pkgs.zsh;
