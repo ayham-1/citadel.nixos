@@ -17,9 +17,11 @@
     opentabletdriver
     pciutils
     eduvpn-client
+    keepassxc
 
     dejavu_fonts
     noto-fonts-emoji
+    adwaita-icon-theme
   ];
 
   # drawing tablet thing

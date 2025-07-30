@@ -16,7 +16,7 @@
 
 - progs
     - [ ] spicetify
-    - [ ] vim
+    - [x] vim
     - [ ] htop
     - [x] neovim
     - [x] steam
@@ -26,8 +26,8 @@
         - [ ] bitwarden integration
     - [ ] nb
     - [ ] brave/chromium
-    - [ ] please fix zsh not doing vim FFS
-    - [ ] keepassxc
+    - [x] please fix zsh not doing vim FFS
+    - [x] keepassxc
 
 - nixos homelab
     - [ ] game servers

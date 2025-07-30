@@ -6,6 +6,7 @@
   services.xrdp = {
     enable = true;
     defaultWindowManager = "icewm-session";
+    openFirewall = true;
   };
   environment.systemPackages = with pkgs; [
     icewm
