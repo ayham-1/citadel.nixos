@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   vim = {
     theme.enable = true;
     theme.style = "dark";
@@ -18,23 +22,35 @@
     };
 
     mini = {
-      animate.enable = true;
+      #animate.enable = true;
       indentscope.enable = true;
     };
 
-    formatter = { conform-nvim.enable = true; };
-    binds = { whichKey.enable = true; };
+    formatter = {conform-nvim.enable = true;};
+    binds = {whichKey.enable = true;};
+    debugger.nvim-dap.enable = true;
+    diagnostics.enable = true;
+    dashboard.startify.enable = true;
+    presence.neocord.enable = true;
+
+    comments.comment-nvim.enable = true;
+
+    git = {
+      git-conflict.enable = true;
+    };
 
     options = {
       tabstop = 4;
       shiftwidth = 4;
       expandtab = true;
+      autoindent = true;
     };
 
     languages = {
       enableTreesitter = true;
 
       nix.enable = true;
+      nix.format.enable = true;
       rust.enable = true;
       clang.enable = true;
     };
