@@ -11,7 +11,8 @@
     telescope.enable = true;
 
     treesitter.enable = true;
-    autocomplete.nvim-cmp.enable = true;
+    #autocomplete.nvim-cmp.enable = true;
+    autocomplete.blink-cmp.enable = true;
 
     lsp = {
       enable = true;
