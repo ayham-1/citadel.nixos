@@ -1,4 +1,10 @@
-{ config, pkgs, lib, sops-nix, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  sops-nix,
+  ...
+}: {
   imports = [
     ../services/grub.nix
     ../services/ntp.nix
@@ -17,9 +23,9 @@
 
   # tailscale for all!
   services.tailscale.enable = true;
-  services.tailscale.authKeyParameters.ephemeral = true;
+  #services.tailscale.authKeyParameters.ephemeral = true;
   services.tailscale.authKeyFile = "/root/.tailscale.key";
-  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+  networking.firewall.trustedInterfaces = ["tailscale0"];
 
   # centrally manage users
   users.mutableUsers = false;

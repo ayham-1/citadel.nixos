@@ -1,4 +1,10 @@
-{ config, pkgs, lib, stylix, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  stylix,
+  ...
+}: {
   # enable brightness control
   programs.light.enable = true;
 
@@ -22,11 +28,12 @@
     dejavu_fonts
     noto-fonts-emoji
     adwaita-icon-theme
+    cachix
   ];
 
   # drawing tablet thing
   hardware.opentabletdriver.enable = true;
-  services.udev.packages = [ pkgs.opentabletdriver ];
+  services.udev.packages = [pkgs.opentabletdriver];
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", MODE="0666"
