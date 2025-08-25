@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     irssi
     discord
@@ -6,5 +10,7 @@
     yt-dlp
     spotify
     ferdium
+    telegram-desktop
+    signal-desktop
   ];
 }
