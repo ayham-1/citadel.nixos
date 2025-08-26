@@ -6,7 +6,9 @@
   environment.systemPackages = with pkgs; [
     gcc
     gnumake
+    cmake
     clang
+    clang-tools
     gdb
     stm32flash
     stm32loader
@@ -14,5 +16,6 @@
     zig
     git-lfs
     gcc-arm-embedded
+    kicad-small
   ];
 }
