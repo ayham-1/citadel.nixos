@@ -30,6 +30,7 @@
     adwaita-icon-theme
     cachix
   ];
+  networking.networkmanager.plugins = with pkgs; [networkmanager-openvpn];
 
   # drawing tablet thing
   hardware.opentabletdriver.enable = true;

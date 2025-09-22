@@ -16,7 +16,8 @@
     zig
     git-lfs
     gcc-arm-embedded
-    kicad-small
+    kicad
     godot
+    savvycan
   ];
 }
