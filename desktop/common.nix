@@ -30,12 +30,16 @@
     adwaita-icon-theme
     cachix
   ];
+  programs.thunderbird.enable = true;
+
   networking.networkmanager.plugins = with pkgs; [networkmanager-openvpn];
+  networking.firewall.checkReversePath = "loose";
 
   # drawing tablet thing
   hardware.opentabletdriver.enable = true;
   services.udev.packages = [pkgs.opentabletdriver];
 
+  # mainly for stlink
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", MODE="0666"
   '';
