@@ -29,6 +29,7 @@
     noto-fonts-emoji
     adwaita-icon-theme
     cachix
+    sxiv
   ];
   programs.thunderbird.enable = true;
 
