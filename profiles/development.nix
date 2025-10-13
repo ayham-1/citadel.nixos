@@ -19,5 +19,6 @@
     kicad
     godot
     savvycan
+    qucs-s
   ];
 }
