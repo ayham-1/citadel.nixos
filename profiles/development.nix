@@ -20,5 +20,6 @@
     godot
     savvycan
     qucs-s
+    nextcloud-client
   ];
 }

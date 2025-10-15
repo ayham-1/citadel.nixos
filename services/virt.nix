@@ -18,5 +18,6 @@
     virt-viewer
     qemu_full
     distrobox
+    swtpm
   ];
 }
