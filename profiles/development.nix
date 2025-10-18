@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -21,5 +22,10 @@
     savvycan
     qucs-s
     nextcloud-client
+    drawio
   ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "drawio"
+    ];
 }
