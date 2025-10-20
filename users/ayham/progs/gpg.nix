@@ -21,7 +21,7 @@ in {
       enableBashIntegration = true;
       enableSshSupport = true;
       grabKeyboardAndMouse = true;
-      pinentryPackage = pkgs.wayprompt;
+      pinentryPackage = pkgs.pinentry-curses;
       sshKeys = ["${keyId}"];
     };
   };
