@@ -56,7 +56,7 @@
   stylix = {
     enable = true;
     image = ../assets/wallpaper.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
     #base16Scheme = {
     #  name = "Modus Vivendi";
 
