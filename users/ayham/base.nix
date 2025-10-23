@@ -1,4 +1,11 @@
-{ config, pkgs, lib, home-manager, sops-nix, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  home-manager,
+  sops-nix,
+  ...
+}: {
   imports = [
     ./progs/bundle.nix
     ./wm/bundle.nix
@@ -27,7 +34,8 @@
       "seat"
       "input"
       "podman"
-      "dailout"
+      "dialout"
+      "tty"
     ];
     hashedPasswordFile = config.sops.secrets.ayham-password.path;
     shell = pkgs.zsh;
@@ -38,7 +46,7 @@
   };
   programs.zsh.enable = true;
 
-  environment.systemPackages = with pkgs; [ home-manager ];
+  environment.systemPackages = with pkgs; [home-manager];
 
   services.printing.enable = true;
 }

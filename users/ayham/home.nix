@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     username = "ayham";
     homeDirectory = "/home/ayham";
@@ -12,7 +19,7 @@
   xdg.userDirs.desktop = "$HOME/desk";
   xdg.userDirs.documents = "$HOME/dox";
   xdg.userDirs.download = "$HOME/.cache/dl";
-  xdg.userDirs.extraConfig = { XDG_MISC_DIR = "$HOME/misc"; };
+  xdg.userDirs.extraConfig = {XDG_MISC_DIR = "$HOME/misc";};
   xdg.userDirs.music = "$HOME/muz";
   xdg.userDirs.pictures = "$HOME/pix";
   xdg.userDirs.publicShare = "$HOME/pub";
@@ -23,17 +30,17 @@
   #imports = [ impermanence.homeManagerModules.impermanence ];
 
   # gtk theme
-  gtk = { enable = true; };
+  gtk = {enable = true;};
   # qt theme
-  qt = { enable = true; };
+  qt = {enable = true;};
 
   # mime types
   xdg.mimeApps.defaultApplications = {
-    "application/pdf" = [ "zathura.desktop" ];
-    "image/*" = [ "sxiv.desktop" ];
-    "video/png" = [ "mpv.desktop" ];
-    "video/jpg" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.desktop" ];
+    "application/pdf" = ["zathura.desktop"];
+    "image/*" = ["sxiv.desktop"];
+    "video/png" = ["mpv.desktop"];
+    "video/jpg" = ["mpv.desktop"];
+    "video/*" = ["mpv.desktop"];
   };
 
   # Nicely reload system units when changing configs
