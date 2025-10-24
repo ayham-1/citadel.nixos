@@ -7,7 +7,7 @@
 }: let
   keyId = "41FE9D7D43999B0A0344E4F4900E1E1A3E142065";
 in {
-  programs.ssh.startAgent = true;
+  #programs.ssh.startAgent = true;
   services.pcscd.enable = true;
   home-manager.users.ayham = {pkgs, ...}: {
     programs.gpg = {

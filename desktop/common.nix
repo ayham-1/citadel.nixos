@@ -19,7 +19,6 @@
     xfce.thunar-archive-plugin
     xfce.thunar-volman
     tigervnc
-    libsForQt5.xp-pen-g430-driver
     opentabletdriver
     pciutils
     eduvpn-client

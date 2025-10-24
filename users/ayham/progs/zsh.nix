@@ -1,21 +1,26 @@
-{ config, pkgs, home-manager, ... }: {
+{
+  config,
+  pkgs,
+  home-manager,
+  ...
+}: {
   programs.zsh.enable = true;
-  environment.systemPackages = with pkgs; [ fzf gnupg oh-my-zsh thefuck ];
+  environment.systemPackages = with pkgs; [fzf gnupg oh-my-zsh];
 
-  home-manager.users.ayham = { pkgs, ... }: {
+  home-manager.users.ayham = {pkgs, ...}: {
     programs.zsh = {
       enable = true;
       enableCompletion = true;
       autosuggestion = {
         enable = true;
-        strategy = [ "completion" "history" ];
+        strategy = ["completion" "history"];
       };
       syntaxHighlighting.enable = true;
       #defaultKeymap = "vicmd";
       autocd = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "sudo" "thefuck" "gpg-agent" "shrink-path" "vi-mode" ];
+        plugins = ["git" "sudo" "gpg-agent" "shrink-path" "vi-mode"];
       };
       shellAliases = {
         myip = "curl ipinfo.io/ip";

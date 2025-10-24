@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     libresprite
     vscode
@@ -6,7 +10,6 @@
     godot
     jetbrains.idea-ultimate
     blender
-    lmms
     blockbench-electron
     pixelorama
   ];

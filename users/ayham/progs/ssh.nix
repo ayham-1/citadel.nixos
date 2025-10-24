@@ -7,9 +7,9 @@
 }: let
   identityFiles = ["id_ayham"];
 in {
-  programs.ssh = {
-    startAgent = true;
-  };
+  #programs.ssh = {
+  #  startAgent = true;
+  #};
   home-manager.users.ayham = {pkgs, ...}: {
     programs.ssh = {
       enable = true;

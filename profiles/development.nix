@@ -21,7 +21,6 @@
     godot
     savvycan
     qucs-s
-    nextcloud-client
     drawio
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
