@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../profiles/common.nix
     ../../profiles/communication.nix
@@ -8,6 +13,7 @@
     ../../profiles/office.nix
     ../../profiles/secrets.nix
     ../../profiles/impermanence.nix
+    ../../profiles/bluetooth.nix
 
     ../../desktop/common.nix
     ../../desktop/sound.nix

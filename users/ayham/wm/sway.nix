@@ -1,4 +1,11 @@
-{ config, pkgs, lib, home-manager, stylix, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  home-manager,
+  stylix,
+  ...
+}: {
   options = {
     citadel.users.wm.sway.enable = lib.mkEnableOption "Citadel: Enables Swaywm userconfig";
   };
@@ -7,8 +14,8 @@
     home-manager.users.ayham = {
       xdg.portal = {
         enable = true;
-        configPackages = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-wlr ];
-        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+        configPackages = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-wlr];
+        extraPortals = [pkgs.xdg-desktop-portal-gtk];
       };
 
       programs.wayprompt.enable = true;
@@ -20,15 +27,15 @@
       wayland.windowManager.sway = let
         mod = "Mod4";
         terminal = "kitty";
-      #menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
-      menu = "rofi -show drun";
-      screenshot = ''grim -g "$(slurp)" - | swappy -f -'';
-      lock = "swaylock";
+        #menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
+        menu = "rofi -show drun";
+        screenshot = ''grim -g "$(slurp)" - | swappy -f -'';
+        lock = "swaylock";
 
-      left = "h";
-      down = "j";
-      up = "k";
-      right = "l";
+        left = "h";
+        down = "j";
+        up = "k";
+        right = "l";
       in {
         enable = true;
         swaynag.enable = true;
@@ -42,24 +49,26 @@
             modifier = "${mod}";
             titlebar = false;
             criteria = [
-              { app_id = ".*wl_mirror"; }
-              { app_id = "mpv"; }
-              { app_id = "qt5ct"; }
-              { app_id = "qt6ct"; }
-              { app_id = "wdisplays"; }
-              { app_id = "xdg-desktop-portal-gtk"; }
-              { app_id = "xdg-desktop-portal-wlr"; }
-              { app_id = "xdg-desktop-portal"; }
-              { app_id = "wayprompt"; }
-              { instance = "lxappearance"; }
+              {app_id = ".*wl_mirror";}
+              {app_id = "mpv";}
+              {app_id = "qt5ct";}
+              {app_id = "qt6ct";}
+              {app_id = "wdisplays";}
+              {app_id = "xdg-desktop-portal-gtk";}
+              {app_id = "xdg-desktop-portal-wlr";}
+              {app_id = "xdg-desktop-portal";}
+              {app_id = "wayprompt";}
+              {instance = "lxappearance";}
             ];
           };
-          bars = [{
-            mode = "hide";
-            hiddenState = "hide";
-            position = "top";
-            command = "waybar";
-          }];
+          bars = [
+            {
+              mode = "hide";
+              hiddenState = "hide";
+              position = "top";
+              command = "waybar";
+            }
+          ];
           keybindings = lib.mkOptionDefault {
             "${mod}+u" = "exec ${menu}";
             "${mod}+Shift+d" = "exec ${screenshot}";
@@ -88,17 +97,19 @@
             smartGaps = true;
           };
           fonts = {
-            names = [ "monospace" ];
+            names = ["monospace"];
             size = 10.0;
           };
           window = {
             titlebar = true;
             border = 1;
             hideEdgeBorders = "smart";
-            commands = [{
-              command = "floating enable, sticky enable";
-              criteria = { title = "Picture-in-Picture"; };
-            }];
+            commands = [
+              {
+                command = "floating enable, sticky enable";
+                criteria = {title = "Picture-in-Picture";};
+              }
+            ];
           };
           input = {
             "type:keyboard" = {
@@ -120,24 +131,23 @@
               dwt = "enabled";
               natural_scroll = "false";
             };
-          "type:tablet_pad" = { map_to_output = "HDMI-A-1"; };
-          "type:tablet_tool" = { map_to_output = "HDMI-A-1"; };
+            "type:tablet_pad" = {map_to_output = "HDMI-A-1";};
+            "type:tablet_tool" = {map_to_output = "HDMI-A-1";};
+          };
         };
+        xwayland = true;
+        extraSessionCommands = ''
+          export SDL_VIDEODRIVER=wayland
+          # needs qt5.qtwayland in systemPackages
+          export QT_QPA_PLATFORM=wayland
+          export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+          # Fix for some Java AWT applications (e.g. Android Studio),
+          # use this if they aren't displayed properly:
+          export _JAVA_AWT_WM_NONREPARENTING=1
+        '';
+        extraConfig = "";
       };
-      xwayland = true;
-      extraSessionCommands = ''
-        export SDL_VIDEODRIVER=wayland
-        # needs qt5.qtwayland in systemPackages
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        # Fix for some Java AWT applications (e.g. Android Studio),
-        # use this if they aren't displayed properly:
-        export _JAVA_AWT_WM_NONREPARENTING=1
-      '';
-      extraConfig = "";
     };
-
+    programs.gamemode.enable = true;
   };
-  programs.gamemode.enable = true;
-};
 }

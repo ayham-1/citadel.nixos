@@ -21,6 +21,9 @@
       localNetworkGameTransfers.openFirewall =
         true; # Open ports in the firewall for Steam Local Network Game Transfers
 
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
       package = pkgs.steam.override {
         extraPkgs = pkgs:
           with pkgs; [
@@ -66,6 +69,6 @@
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) ["steam" "steam-original" "steam-run"];
 
-    environment.systemPackages = with pkgs; [steam-run mangohud radeontop gamescope];
+    environment.systemPackages = with pkgs; [steam-run mangohud radeontop gamescope protonup-qt];
   };
 }
