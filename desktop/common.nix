@@ -29,6 +29,9 @@
     adwaita-icon-theme
     cachix
     sxiv
+
+    gimp
+    bottles
   ];
   programs.thunderbird.enable = true;
 
