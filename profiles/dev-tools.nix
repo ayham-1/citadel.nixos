@@ -10,7 +10,7 @@
     godot
     jetbrains.idea-ultimate
     blender
-    blockbench-electron
+    blockbench
     pixelorama
   ];
 }

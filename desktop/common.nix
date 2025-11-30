@@ -12,7 +12,7 @@
 
   # common tools
   environment.systemPackages = with pkgs; [
-    bitwarden
+    bitwarden-desktop
     bitwarden-cli
     mpv
     xfce.thunar
@@ -25,7 +25,7 @@
     keepassxc
 
     dejavu_fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     adwaita-icon-theme
     cachix
     sxiv
@@ -83,7 +83,7 @@
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
     };

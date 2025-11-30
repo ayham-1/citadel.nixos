@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   fonts = {
     fontDir.enable = true;
     enableDefaultPackages = true;
@@ -10,7 +14,7 @@
       twemoji-color-font
       liberation_ttf
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       font-awesome
     ];
 

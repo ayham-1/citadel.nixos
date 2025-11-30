@@ -16,7 +16,6 @@
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer
-    qemu_full
     distrobox
     swtpm
   ];

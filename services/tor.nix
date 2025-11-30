@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.tor = {
     enable = true;
     openFirewall = true;
@@ -11,7 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     torsocks
-    tor-browser-bundle-bin
+    tor-browser
     onioncircuits
   ];
 }

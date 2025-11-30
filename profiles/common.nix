@@ -59,7 +59,7 @@
     pwgen
     mkpasswd
     jq
-    gitAndTools.gitFull
+    git
     pass
     macchanger
     vim
