@@ -10,8 +10,15 @@
 
   programs.dconf.enable = true;
 
+  # zsa
+  hardware.keyboard.zsa.enable = true;
+
   # common tools
   environment.systemPackages = with pkgs; [
+    # zsa
+    wally-cli
+    keymapp
+
     bitwarden-desktop
     bitwarden-cli
     mpv
