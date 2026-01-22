@@ -1,5 +1,9 @@
-{ config, pkgs, ... }: {
-  programs.sway = { enable = true; };
+{
+  config,
+  pkgs,
+  ...
+}: {
+  programs.sway = {enable = true;};
   environment.systemPackages = with pkgs; [
     sway
     swaybg
@@ -20,14 +24,15 @@
     dmenu
     wmenu
     kanshi
+    flameshot
   ];
 
   services.seatd.enable = true;
   services.dbus.enable = true;
   security.polkit.enable = true;
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
 
   services.greetd = {
     enable = true;

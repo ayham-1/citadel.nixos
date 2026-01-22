@@ -23,13 +23,26 @@
 
       services.mako.enable = true;
 
+      # flameshot
+      services.flameshot = {
+        # Also installs/enables flameshot
+        enable = true;
+        settings = {
+          General = {
+            useGrimAdapter = true;
+            # Stops warnings for using Grim
+            disabledGrimWarning = true;
+          };
+        };
+      };
+
       stylix.targets.sway.enable = true;
       wayland.windowManager.sway = let
         mod = "Mod4";
         terminal = "kitty";
         #menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
         menu = "rofi -show drun";
-        screenshot = ''grim -g "$(slurp)" - | swappy -f -'';
+        screenshot = ''flameshot gui'';
         lock = "swaylock";
 
         left = "h";
