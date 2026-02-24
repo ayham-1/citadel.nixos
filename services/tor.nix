@@ -5,12 +5,12 @@
   ...
 }: {
   services.tor = {
-    enable = true;
-    openFirewall = true;
-    client.enable = true;
+    enable = false;
+    openFirewall = false;
+    client.enable = false;
     relay.enable = false; # no
 
-    torsocks.enable = true;
+    torsocks.enable = false;
   };
   #programs.tor-browser.enable = true;
 

@@ -8,7 +8,6 @@
     vscode
     pureref
     godot
-    jetbrains.idea-ultimate
     blender
     blockbench
     pixelorama

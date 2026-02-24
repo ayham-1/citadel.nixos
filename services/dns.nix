@@ -1,3 +1,6 @@
-{ config, lib, ... }: {
-  networking.extraHosts = (builtins.readFile ../etc/hosts);
+{
+  config,
+  lib,
+  ...
+}: {
 }

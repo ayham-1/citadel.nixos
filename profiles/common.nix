@@ -8,7 +8,6 @@
   imports = [
     ../services/grub.nix
     ../services/ntp.nix
-    ../services/dns.nix
     ../services/localization.nix
 
     sops-nix.nixosModules.sops

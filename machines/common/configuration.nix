@@ -24,7 +24,7 @@
     ../../services/localization.nix
     ../../services/ssh.nix
     ../../services/ssh-server.nix
-    ../../services/dns.nix
+    ../../services/vpn.nix
     ../../services/ntp.nix
     ../../services/virt.nix
     ../../services/wifi.nix
