@@ -22,9 +22,15 @@
     savvycan
     qucs-s
     drawio
+    vscode
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "drawio"
+      "vscode"
     ];
+
+  services.udev.packages = [
+    pkgs.stlink
+  ];
 }
