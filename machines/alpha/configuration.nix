@@ -1,5 +1,13 @@
-{ lib, config, pkgs, ... }: {
-  imports = [ ../common/configuration.nix ];
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ../common/configuration.nix
+    ../../profiles/android.nix
+  ];
 
   citadel.machines.common.hostName = "alpha";
 

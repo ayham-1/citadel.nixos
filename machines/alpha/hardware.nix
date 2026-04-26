@@ -1,4 +1,11 @@
-{ config, lib, pkgs, modulesPath, nixos-hardware, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  nixos-hardware,
+  ...
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
 
@@ -7,11 +14,17 @@
     nixos-hardware.nixosModules.common-pc-ssd
   ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod"];
+  boot.initrd.kernelModules = [
+    "vfio_pci"
+    "vfio"
+    "vfio_iommu_type1"
+
+    "amdgpu" # replace or remove with your device's driver as needed
+  ];
+  boot.kernelParams = ["amd_iommu=on" "vfio-pci.ids=8086:095a"];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -21,9 +34,8 @@
     enableCryptodisk = true;
     efiSupport = true;
     efiInstallAsRemovable = false;
-    devices = [ "nodev" ]; # UEFI-only boot (no MBR)
+    devices = ["nodev"]; # UEFI-only boot (no MBR)
   };
-
 
   boot.initrd.luks.devices = {
     boot = {
@@ -46,7 +58,7 @@
   fileSystems."/" = {
     device = "/dev/mapper/root";
     fsType = "btrfs";
-    options = [ "subvol=root" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=root" "noatime" "compress=zstd" "ssd"];
   };
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
@@ -77,36 +89,36 @@
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=nix" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=nix" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/persistent" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=persistent" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=persistent" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/home" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=home" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=home" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/data" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=data" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=data" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/boot" = {
     device = "/dev/mapper/boot";
     fsType = "ext4";
-    options = [ "defaults" ];
+    options = ["defaults"];
   };
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
   networking.interfaces.eno1.useDHCP = lib.mkDefault true;

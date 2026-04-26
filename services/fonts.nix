@@ -8,6 +8,7 @@
     enableDefaultPackages = true;
 
     packages = with pkgs; [
+      monocraft
       fira-mono
       libertine
       open-sans

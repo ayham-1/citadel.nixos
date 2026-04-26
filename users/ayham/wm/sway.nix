@@ -152,6 +152,7 @@
         extraSessionCommands = ''
           export SDL_VIDEODRIVER=wayland
           # needs qt5.qtwayland in systemPackages
+          #export QT_QPA_PLATFORM=xcb
           export QT_QPA_PLATFORM=wayland
           export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
           # Fix for some Java AWT applications (e.g. Android Studio),

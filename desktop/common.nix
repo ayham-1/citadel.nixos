@@ -5,8 +5,7 @@
   stylix,
   ...
 }: {
-  # enable brightness control
-  programs.light.enable = true;
+  hardware.acpilight.enable = true;
 
   programs.dconf.enable = true;
 
@@ -65,39 +64,25 @@
   stylix = {
     enable = true;
     image = ../assets/wallpaper.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
-    #base16Scheme = {
-    #  name = "Modus Vivendi";
-
-    #  base00 = "#000000"; # background
-    #  base01 = "#1a1a1a"; # subtle background
-    #  base02 = "#303030"; # highlight bg
-    #  base03 = "#505050"; # comments
-    #  base04 = "#b0b0b0"; # mid fg
-    #  base05 = "#ffffff"; # foreground
-    #  base06 = "#ffffff"; # emphasis fg
-    #  base07 = "#ffffff"; # strong fg
-    #  base08 = "#ff6f6f"; # red
-    #  base09 = "#ff9f00"; # orange
-    #  base0A = "#ffd700"; # yellow
-    #  base0B = "#44bc44"; # green
-    #  base0C = "#00d3d0"; # cyan
-    #  base0D = "#2fafff"; # blue
-    #  base0E = "#feacd0"; # magenta
-    #  base0F = "#b6a0ff"; # violet
-    #};
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/bright.yaml";
     fonts = {
-      serif = config.stylix.fonts.monospace;
-      sansSerif = config.stylix.fonts.monospace;
+      serif.package = pkgs.monocraft;
+      sansSerif.package = pkgs.monocraft;
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
     };
     cursor = {
-      package = pkgs.posy-cursors;
-      size = 12;
-      name = "Posy_Cursor_Black";
+      package = pkgs.banana-cursor;
+      size = 16;
+      name = "Banana";
+    };
+    iconTheme = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
     };
     polarity = "dark";
   };

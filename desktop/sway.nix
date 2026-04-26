@@ -48,6 +48,7 @@
     NIXOS_OZONE_WL = "1";
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "sway";
+    #QT_QPA_PLATFORM = "xcb";
     QT_QPA_PLATFORM = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland";
