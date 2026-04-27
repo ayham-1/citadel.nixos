@@ -37,7 +37,6 @@
     sxiv
 
     gimp
-    bottles
   ];
   programs.thunderbird.enable = true;
 
@@ -86,4 +85,13 @@
     };
     polarity = "dark";
   };
+
+  # fixes
+  #nixpkgs.overlays = [
+  #  (_: prev: {
+  #    openldap = prev.openldap.overrideAttrs {
+  #      doCheck = !prev.stdenv.hostPlatform.isi686;
+  #    };
+  #  })
+  #];
 }
