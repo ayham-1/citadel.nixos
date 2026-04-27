@@ -66,7 +66,11 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/bright.yaml";
     fonts = {
       serif.package = pkgs.monocraft;
+      serif.name = "Monocraft";
       sansSerif.package = pkgs.monocraft;
+      sansSerif.name = "Monocraft";
+      monospace.package = pkgs.monocraft;
+      monospace.name = "Monocraft";
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
@@ -74,7 +78,7 @@
     };
     cursor = {
       package = pkgs.banana-cursor;
-      size = 16;
+      size = 28;
       name = "Banana";
     };
     iconTheme = {
