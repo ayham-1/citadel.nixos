@@ -65,12 +65,8 @@
     image = ../assets/wallpaper.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/bright.yaml";
     fonts = {
-      serif.package = pkgs.monocraft;
-      serif.name = "Monocraft";
-      sansSerif.package = pkgs.monocraft;
-      sansSerif.name = "Monocraft";
-      monospace.package = pkgs.monocraft;
-      monospace.name = "Monocraft";
+      serif = config.stylix.fonts.monospace;
+      sansSerif = config.stylix.fonts.monospace;
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
