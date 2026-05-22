@@ -114,6 +114,24 @@
             }
           ];
       };
+
+      labor = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = attrs;
+        modules =
+          commonModules
+          ++ [
+            ./machines/labor/configuration.nix
+            ./users/ayham/base.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = null;
+              home-manager.users.ayham = import ./users/ayham/home.nix;
+            }
+          ];
+      };
     };
   };
 }

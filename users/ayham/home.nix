@@ -41,6 +41,19 @@
     "video/png" = ["mpv.desktop"];
     "video/jpg" = ["mpv.desktop"];
     "video/*" = ["mpv.desktop"];
+    "image/png" = ["sxiv.desktop"];
+    "image/jpeg" = ["sxiv.desktop"];
+    "image/gif" = ["sxiv.desktop"];
+    "image/webp" = ["sxiv.desktop"];
+    "image/bmp" = ["sxiv.desktop"];
+    "image/tiff" = ["sxiv.desktop"];
+  };
+
+  xdg.mimeApps.associations.added = {
+    "image/png" = ["sxiv.desktop"];
+    "image/jpeg" = ["sxiv.desktop"];
+    "image/gif" = ["sxiv.desktop"];
+    "image/webp" = ["sxiv.desktop"];
   };
 
   # Nicely reload system units when changing configs
