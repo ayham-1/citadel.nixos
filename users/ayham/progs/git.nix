@@ -15,5 +15,6 @@
       signing.signByDefault = true;
       diff-so-fancy.enable = true;
     };
+    programs.diff-so-fancy.enableGitIntegration = true;
   };
 }

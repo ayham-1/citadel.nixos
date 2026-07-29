@@ -62,7 +62,7 @@
   # theme
   stylix = {
     enable = true;
-    image = ../assets/wallpaper.jpg;
+    image = ../assets/wallpaper.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/bright.yaml";
     fonts = {
       serif = config.stylix.fonts.monospace;
@@ -71,11 +71,6 @@
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
-    };
-    cursor = {
-      package = pkgs.banana-cursor;
-      size = 28;
-      name = "Banana";
     };
     iconTheme = {
       enable = true;
@@ -94,4 +89,8 @@
   #    };
   #  })
   #];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
 }

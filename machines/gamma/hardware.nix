@@ -1,4 +1,11 @@
-{ config, lib, pkgs, modulesPath, nixos-hardware, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  nixos-hardware,
+  ...
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
 
@@ -6,11 +13,10 @@
     nixos-hardware.nixosModules.common-pc-ssd
   ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod"];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -20,7 +26,7 @@
     enableCryptodisk = true;
     efiSupport = true;
     efiInstallAsRemovable = false;
-    devices = [ "nodev" ]; # UEFI-only boot (no MBR)
+    devices = ["nodev"]; # UEFI-only boot (no MBR)
   };
 
   boot.initrd.luks.devices = {
@@ -45,67 +51,67 @@
   fileSystems."/" = {
     device = "/dev/mapper/root";
     fsType = "btrfs";
-    options = [ "subvol=root" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=root" "noatime" "compress=zstd" "ssd"];
   };
-  boot.initrd.postResumeCommands = lib.mkAfter ''
-    mkdir /btrfs_tmp
-    mount /dev/mapper/root /btrfs_tmp
-    if [[ -e /btrfs_tmp/root ]]; then
-        mkdir -p /btrfs_tmp/old_roots
-        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
-    fi
+  #boot.initrd.postResumeCommands = lib.mkAfter ''
+  #  mkdir /btrfs_tmp
+  #  mount /dev/mapper/root /btrfs_tmp
+  #  if [[ -e /btrfs_tmp/root ]]; then
+  #      mkdir -p /btrfs_tmp/old_roots
+  #      timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+  #      mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+  #  fi
 
-    delete_subvolume_recursively() {
-        IFS=$'\n'
-        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-            delete_subvolume_recursively "/btrfs_tmp/$i"
-        done
-        btrfs subvolume delete "$1"
-    }
+  #  delete_subvolume_recursively() {
+  #      IFS=$'\n'
+  #      for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+  #          delete_subvolume_recursively "/btrfs_tmp/$i"
+  #      done
+  #      btrfs subvolume delete "$1"
+  #  }
 
-    for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
-        delete_subvolume_recursively "$i"
-    done
+  #  for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+  #      delete_subvolume_recursively "$i"
+  #  done
 
-    btrfs subvolume create /btrfs_tmp/root
-    umount /btrfs_tmp
-  '';
+  #  btrfs subvolume create /btrfs_tmp/root
+  #  umount /btrfs_tmp
+  #'';
 
   fileSystems."/nix" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=nix" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=nix" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/persistent" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=persistent" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=persistent" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/home" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=home" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=home" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/data" = {
     device = "/dev/mapper/root";
     neededForBoot = true;
     fsType = "btrfs";
-    options = [ "subvol=data" "noatime" "compress=zstd" "ssd" ];
+    options = ["subvol=data" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/boot" = {
     device = "/dev/mapper/boot";
     fsType = "ext4";
-    options = [ "defaults" ];
+    options = ["defaults"];
   };
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
   networking.interfaces.eno1.useDHCP = lib.mkDefault true;

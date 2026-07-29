@@ -33,4 +33,8 @@
   services.udev.packages = [
     pkgs.stlink
   ];
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", MODE="0666"
+  '';
 }

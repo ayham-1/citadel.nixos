@@ -41,6 +41,7 @@
         menu = "rofi -show drun";
         screenshot = ''flameshot gui'';
         lock = "swaylock";
+        kbptr = "wl-kbptr -o modes=floating,click";
 
         left = "h";
         down = "j";
@@ -87,8 +88,9 @@
             "${mod}+Shift+c" = "kill";
             "${mod}+Shift+r" = "reload";
             "${mod}+Shift+f" = "floating toggle";
-            "XF86MonBrightnessUp" = "exec light -A 5";
-            "XF86MonBrightnessDown" = "exec light -U 5";
+            "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
+            "XF86MonBrightnessDown" = "exec brightnessctl set -10%";
+            "${mod}+m" = "exec sh -lc '${kbptr}'";
           };
           modes = {
             resize = {

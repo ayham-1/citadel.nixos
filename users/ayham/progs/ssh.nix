@@ -14,6 +14,7 @@ in {
     programs.ssh = {
       enable = true;
       addKeysToAgent = "yes";
+      enableDefaultConfig = true;
 
       matchBlocks = {
         "git" = {
