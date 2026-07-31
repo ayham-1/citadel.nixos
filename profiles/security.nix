@@ -61,6 +61,7 @@
     yubikey-agent
     libfido2 # Support for FIDO2/WebAuthn
     opensc # Smart card support
+    pam_u2f
   ];
   hardware.gpgSmartcards.enable = true;
   services = {
