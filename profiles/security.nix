@@ -1,5 +1,11 @@
-{ config, pkgs, lib, aa-alias-manager, ... }: {
-  imports = [ aa-alias-manager.nixosModules.default ];
+{
+  config,
+  pkgs,
+  lib,
+  aa-alias-manager,
+  ...
+}: {
+  imports = [aa-alias-manager.nixosModules.default];
 
   environment.memoryAllocator.provider = "libc";
 
@@ -46,4 +52,45 @@
 
   # Sandboxing
   programs.firejail.enable = true;
+
+  # Yubico
+  environment.systemPackages = with pkgs; [
+    yubioath-flutter
+    yubikey-manager
+    yubikey-personalization # CLI tools for configuring YubiKey
+    yubikey-agent
+    libfido2 # Support for FIDO2/WebAuthn
+    opensc # Smart card support
+  ];
+  hardware.gpgSmartcards.enable = true;
+  services = {
+    udev.packages = with pkgs; [yubikey-personalization];
+    yubikey-agent.enable = true;
+  };
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+
+    greetd.u2fAuth = true;
+    gdm-password.u2fAuth = true;
+  };
+  security.pam.u2f = {
+    enable = true;
+
+    # require both password and key
+    control = "required";
+
+    # shows "Touch your security key"
+    cue = true;
+  };
+
+  security.pam.yubico.control = "required";
+  services.udev.extraRules = ''
+    ACTION=="remove",\
+     ENV{ID_BUS}=="usb",\
+     ENV{ID_MODEL_ID}=="0407",\
+     ENV{ID_VENDOR_ID}=="1050",\
+     ENV{ID_VENDOR}=="Yubico",\
+     RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+  '';
 }

@@ -18,10 +18,18 @@
         extraPortals = [pkgs.xdg-desktop-portal-gtk];
       };
 
-      programs.wayprompt.enable = true;
       programs.swaylock.enable = true;
 
       services.mako.enable = true;
+      services.swayidle = {
+        enable = true;
+        events = [
+          {
+            event = "lock";
+            command = "swaylock";
+          }
+        ];
+      };
 
       # flameshot
       services.flameshot = {

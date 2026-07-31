@@ -14,7 +14,7 @@ in {
       enable = true;
       mutableKeys = true;
     };
-    home.packages = with pkgs; [gnupg pinentry-all wayprompt];
+    home.packages = with pkgs; [gnupg pinentry-all];
 
     services.gpg-agent = {
       enable = true;
@@ -30,5 +30,5 @@ in {
     agent.enable = true;
     agent.pinentryPackage = pkgs.pinentry-curses;
   };
-  environment.systemPackages = with pkgs; [gnupg pinentry-all wayprompt pinentry-curses];
+  environment.systemPackages = with pkgs; [gnupg pinentry-all pinentry-curses];
 }

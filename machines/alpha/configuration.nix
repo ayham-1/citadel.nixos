@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../common/configuration.nix
-    ../../profiles/android.nix
   ];
 
   citadel.machines.common.hostName = "alpha";

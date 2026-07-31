@@ -1,11 +1,15 @@
-{ config, sops-nix, ... }: {
+{
+  config,
+  sops-nix,
+  ...
+}: {
   sops.secrets."wireless.env".neededForUsers = true;
-  sops.secrets."wireless.env" = { };
+  sops.secrets."wireless.env" = {};
 
   networking.networkmanager = {
     enable = true;
     ensureProfiles = {
-      environmentFiles = [ config.sops.secrets."wireless.env".path ];
+      environmentFiles = [config.sops.secrets."wireless.env".path];
       profiles = {
         home-wifi = {
           connection.id = "home-wifi";
@@ -26,7 +30,7 @@
           wifi.ssid = "$ovgu_ssid";
           wifi.security = "802-11-wireless-security";
 
-          "802-11-wireless-security" = { key-mgmt = "wpa-eap"; };
+          "802-11-wireless-security" = {key-mgmt = "wpa-eap";};
 
           "802-1x" = {
             eap = "peap";
@@ -35,6 +39,17 @@
             phase2-auth = "mschapv2";
             #ca-cert = "/etc/ssl/certs/ca-certificates.crt";
           };
+        };
+
+        hti-lab = {
+          connection.id = "hti-lab";
+          connection.type = "ethernet";
+          connection.autoconnect = "true";
+          ipv4.method = "manual";
+          ipv4.addresses = "141.44.61.64/24";
+          ipv4.dns = "141.44.1.1";
+          ipv4.dns-search = "uni-magdeburg.de";
+          ipv4.gateway = "141.44.61.200";
         };
       };
     };
