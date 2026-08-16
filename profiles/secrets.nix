@@ -1,5 +1,10 @@
-{ config, lib, sops-nix, ... }: {
-  imports = [ sops-nix.nixosModules.sops ];
+{
+  config,
+  lib,
+  sops-nix,
+  ...
+}: {
+  imports = [sops-nix.nixosModules.sops];
 
   # common sops config
   sops = {
@@ -11,11 +16,13 @@
       keyFile = "/persistent/etc/sops/keys.txt";
       generateKey = false;
     };
-    secrets = lib.mkMerge [{
-      "private_keys/tailscale" = { 
-        mode = "0400"; 
-        path = "/root/.tailscale.key";
-      };
-    }];
+    secrets = lib.mkMerge [
+      {
+        "private_keys/tailscale" = {
+          mode = "0400";
+          path = "/root/.tailscale.key";
+        };
+      }
+    ];
   };
 }
