@@ -81,6 +81,19 @@
     polarity = "dark";
   };
 
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      sway = {
+        prettyName = "Sway";
+        comment = "Sway compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/sway";
+      };
+    };
+  };
+  programs.regreet.enable = true;
+  programs.gamemode.enable = true;
+
   # fixes
   #nixpkgs.overlays = [
   #  (_: prev: {

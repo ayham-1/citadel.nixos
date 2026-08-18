@@ -7,17 +7,11 @@
   ...
 }: {
   options = {
-    citadel.users.wm.sway.enable = lib.mkEnableOption "Citadel: Enables Swaywm userconfig";
+    citadel.users.wm.sway.enable = lib.mkEnableOption "citadel: enables swaywm userconfig";
   };
 
   config = lib.mkIf config.citadel.users.wm.sway.enable {
     home-manager.users.ayham = {
-      xdg.portal = {
-        enable = true;
-        configPackages = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-wlr];
-        extraPortals = [pkgs.xdg-desktop-portal-gtk];
-      };
-
       programs.swaylock.enable = true;
 
       services.mako.enable = true;
@@ -29,16 +23,6 @@
             command = "swaylock";
           }
         ];
-      };
-
-      # flameshot
-      services.flameshot = {
-        # Also installs/enables flameshot
-        enable = true;
-        settings = {
-          General = {
-          };
-        };
       };
 
       stylix.targets.sway.enable = true;
@@ -169,6 +153,5 @@
         extraConfig = "";
       };
     };
-    programs.gamemode.enable = true;
   };
 }

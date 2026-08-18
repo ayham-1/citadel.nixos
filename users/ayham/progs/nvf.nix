@@ -27,12 +27,33 @@
       indentscope.enable = true;
     };
 
+    visuals = {
+      fidget-nvim.enable = true;
+      rainbow-delimiters.enable = true;
+    };
+
+    utility = {
+      oil-nvim = {
+        enable = true;
+        gitStatus.enable = true;
+      };
+      outline = {
+        aerial-nvim.enable = true;
+      };
+      sleuth.enable = true;
+      smart-splits.enable = true;
+      undotree.enable = true;
+    };
+
+    git.enable = true;
+
     formatter = {conform-nvim.enable = true;};
     binds = {whichKey.enable = true;};
     debugger.nvim-dap.enable = true;
     diagnostics.enable = true;
     dashboard.startify.enable = true;
-    presence.neocord.enable = true;
+
+    filetree.neo-tree.enable = true;
 
     comments.comment-nvim.enable = true;
 
@@ -56,5 +77,7 @@
       zig.enable = true;
       clang.enable = true;
     };
+
+    projects.project-nvim.enable = true;
   };
 }
