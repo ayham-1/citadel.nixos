@@ -12,6 +12,7 @@
       configPackages = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-wlr];
       extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
+
     # flameshot
     services.flameshot = {
       # Also installs/enables flameshot
@@ -20,6 +21,20 @@
         General = {
         };
       };
+    };
+
+    services.mako.enable = true;
+
+    programs.swaylock.enable = true;
+
+    services.swayidle = {
+      enable = true;
+      events = [
+        {
+          event = "lock";
+          command = "swaylock";
+        }
+      ];
     };
   };
 }

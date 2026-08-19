@@ -100,8 +100,8 @@
             layer = "top";
             position = "bottom";
             height = 14;
-            modules-left = ["sway/workspaces" "sway/mode"];
-            modules-center = ["gamemode" "sway/window" "systemd-failed-units"];
+            modules-left = ["sway/workspaces" "sway/mode" "niri/workspaces"];
+            modules-center = ["gamemode" "sway/window" "niri/window" "systemd-failed-units"];
             modules-right = ["mpd" "privacy" "wireplumber" "network" "cpu" "memory" "battery" "clock" "tray"];
 
             "sway/workspaces" = {

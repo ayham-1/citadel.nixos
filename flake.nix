@@ -25,6 +25,10 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     nvf.url = "github:notashelf/nvf";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -40,6 +44,7 @@
     impermanence,
     aa-alias-manager,
     nvf,
+    niri,
     ...
   } @ attrs: let
     system = "x86_64-linux";
@@ -74,6 +79,12 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = null;
+              home-manager.extraSpecialArgs = {inherit attrs;};
+
+              home-manager.sharedModules = [
+                niri.homeModules.niri
+              ];
+
               home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];
@@ -92,6 +103,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = null;
+
+              home-manager.sharedModules = [
+                niri.homeModuels.niri
+              ];
+
               home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];
@@ -110,6 +126,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = null;
+
+              home-manager.sharedModules = [
+                niri.homeModuels.niri
+              ];
+
               home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];
@@ -128,6 +149,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = null;
+
+              home-manager.sharedModules = [
+                niri.homeModuels.niri
+              ];
+
               home-manager.users.ayham = import ./users/ayham/home.nix;
             }
           ];

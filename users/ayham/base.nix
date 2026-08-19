@@ -19,7 +19,7 @@
 
   users.users.ayham = {
     isNormalUser = true; # just makingg sure
-    home = "/home/ayham";
+    #home = "/home/ayham";
     description = "ayham";
     extraGroups = [
       "wheel"

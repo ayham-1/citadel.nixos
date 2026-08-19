@@ -72,6 +72,11 @@
         name = "Noto Color Emoji";
       };
     };
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 48;
+    };
     iconTheme = {
       enable = true;
       package = pkgs.papirus-icon-theme;
@@ -89,9 +94,16 @@
         comment = "Sway compositor managed by UWSM";
         binPath = "/run/current-system/sw/bin/sway";
       };
+      niri = {
+        prettyName = "Niri";
+        comment = "Niri compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/niri-session";
+      };
     };
   };
+  #systemd.user.services.niri.enableDefaultPath = false;
   programs.regreet.enable = true;
+  programs.regreet.cageArgs = ["-m" "last"];
   programs.gamemode.enable = true;
 
   # fixes
