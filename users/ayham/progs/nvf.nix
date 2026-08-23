@@ -7,6 +7,9 @@
     theme.enable = true;
     theme.style = "dark";
 
+    spellcheck.enable = true;
+    spellcheck.languages = ["en" "de"];
+
     statusline.lualine.enable = true;
     telescope.enable = true;
 

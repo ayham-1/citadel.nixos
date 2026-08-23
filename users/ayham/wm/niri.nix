@@ -11,6 +11,10 @@
   };
 
   config = lib.mkIf config.citadel.users.wm.niri.enable {
+    environment.systemPackages = with pkgs; [
+      xwayland-satellite # xwayland support
+    ];
+
     programs.niri.enable = true;
     home-manager.users.ayham = {
       programs.niri = {

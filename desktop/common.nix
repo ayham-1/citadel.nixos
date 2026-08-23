@@ -103,7 +103,6 @@
   };
   #systemd.user.services.niri.enableDefaultPath = false;
   programs.regreet.enable = true;
-  programs.regreet.cageArgs = ["-m" "last"];
   programs.gamemode.enable = true;
 
   # fixes
