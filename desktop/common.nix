@@ -101,8 +101,19 @@
       };
     };
   };
+
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --remember --remember-user-session --sessions /run/current-system/sw/share/wayland-sessions";
+        user = "greeter";
+      };
+    };
+  };
+
   #systemd.user.services.niri.enableDefaultPath = false;
-  programs.regreet.enable = true;
   programs.gamemode.enable = true;
 
   # fixes
