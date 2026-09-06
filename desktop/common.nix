@@ -48,9 +48,9 @@
   services.udev.packages = [pkgs.opentabletdriver];
 
   # mainly for stlink
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", MODE="0666"
-  '';
+  #services.udev.extraRules = ''
+  #  SUBSYSTEM=="usb", MODE="0666"
+  #'';
 
   # magic FHS
   programs.nix-ld.enable = true;
@@ -113,19 +113,9 @@
     };
   };
 
-  #systemd.user.services.niri.enableDefaultPath = false;
   programs.gamemode.enable = true;
 
-  # fixes
-  #nixpkgs.overlays = [
-  #  (_: prev: {
-  #    openldap = prev.openldap.overrideAttrs {
-  #      doCheck = !prev.stdenv.hostPlatform.isi686;
-  #    };
-  #  })
+  #nixpkgs.config.permittedInsecurePackages = [
+  #  "electron-39.8.10"
   #];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-  ];
 }
