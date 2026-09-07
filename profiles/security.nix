@@ -83,6 +83,15 @@
 
     # shows "Touch your security key"
     cue = true;
+    interactive = true;
+
+    settings = {
+      origin = "pam://yubi";
+      authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
+        "ayham"
+        ":Hb99UpQW1PrWwnwX/NiDYhI6rTIy78UVz5UlYA1l4cKT/BzoistDJ3e8ZF6Ofmgiy/ydhUolwv5cCKMZihA/dw==,6wWPAnC1CNvuBzbKYKGMjS0X5S7CYrkz6YtVhIwxYed+mUJwfBQg5IMzfnV0OK3YnBT4cpk0dJyw0tAW4ORkOA==,es256,+presence"
+      ]);
+    };
   };
 
   security.pam.yubico.control = "required";

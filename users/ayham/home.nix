@@ -27,9 +27,6 @@
   xdg.userDirs.templates = "$HOME/templ";
   xdg.userDirs.videos = "$HOME/vidz";
 
-  # TODO(ayham-1): maybe someday have an impermenant home
-  #imports = [ impermanence.homeManagerModules.impermanence ];
-
   # gtk theme
   gtk = {enable = true;};
   # qt theme

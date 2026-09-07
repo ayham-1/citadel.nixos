@@ -6,6 +6,10 @@
 }: {
   imports = [
     ../common/configuration.nix
+
+    ../../profiles/impermanence.nix
+
+    ./hardware.nix
   ];
 
   citadel.machines.common.hostName = "veta";

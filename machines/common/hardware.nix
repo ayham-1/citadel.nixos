@@ -85,13 +85,6 @@
       options = ["subvol=persistent" "noatime" "compress=zstd" "ssd"];
     };
 
-    fileSystems."/home" = {
-      device = "/dev/mapper/root";
-      neededForBoot = true;
-      fsType = "btrfs";
-      options = ["subvol=home" "noatime" "compress=zstd" "ssd"];
-    };
-
     fileSystems."/data" = {
       device = "/dev/mapper/root";
       neededForBoot = true;

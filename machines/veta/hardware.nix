@@ -91,12 +91,12 @@
     options = ["subvol=persistent" "noatime" "compress=zstd" "ssd"];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/mapper/root";
-    neededForBoot = true;
-    fsType = "btrfs";
-    options = ["subvol=home" "noatime" "compress=zstd" "ssd"];
-  };
+  #fileSystems."/home" = {
+  #  device = "/dev/mapper/root";
+  #  neededForBoot = true;
+  #  fsType = "btrfs";
+  #  options = ["subvol=home" "noatime" "compress=zstd" "ssd"];
+  #};
 
   fileSystems."/data" = {
     device = "/dev/mapper/root";
@@ -112,12 +112,17 @@
   };
   swapDevices = [];
 
-  networking.useDHCP = lib.mkDefault true;
-  networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
+  networking.useDHCP = lib.mkForce true;
+  networking.interfaces.eno1.useDHCP = lib.mkForce true;
+  networking.interfaces.wlan0.useDHCP = lib.mkForce true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  nixpkgs.hostPlatform = lib.mkForce "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkForce "powersave";
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+  };
 }

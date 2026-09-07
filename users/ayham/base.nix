@@ -13,6 +13,7 @@
     ./browsers/bundle.nix
 
     ./secrets.nix
+    ./impermanence.nix
   ];
 
   sops.secrets.ayham-password.neededForUsers = true;
