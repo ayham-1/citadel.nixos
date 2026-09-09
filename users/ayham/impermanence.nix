@@ -14,6 +14,7 @@
         "desk"
         "pix"
         "dox"
+        "muz"
         ".cache/dl/"
         {
           directory = ".gnupg";

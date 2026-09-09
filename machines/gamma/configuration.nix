@@ -35,7 +35,7 @@
 
   networking.hostName = "gamma";
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 
   system.stateVersion = "25.05";

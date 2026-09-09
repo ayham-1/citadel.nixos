@@ -1,6 +1,4 @@
 {
-  config,
-  impermanence,
   utils,
   pkgs,
   ...

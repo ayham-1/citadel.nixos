@@ -6,11 +6,14 @@
 }: {
   imports = [
     ../common/configuration.nix
+
+    ../../profiles/impermanence.nix
+    ./hardware.nix
   ];
 
   citadel.machines.common.hostName = "alpha";
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 
   citadel.machines.common.enable = lib.mkDefault true;

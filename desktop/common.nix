@@ -107,15 +107,9 @@
     useTextGreeter = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --remember --remember-user-session --sessions /run/current-system/sw/share/wayland-sessions";
+        command = "${pkgs.tuigreet}/bin/tuigreet --background matrix --time --battery --asterisks --user-menu --sessions /run/current-system/sw/share/wayland-sessions";
         user = "greeter";
       };
     };
   };
-
-  programs.gamemode.enable = true;
-
-  #nixpkgs.config.permittedInsecurePackages = [
-  #  "electron-39.8.10"
-  #];
 }
