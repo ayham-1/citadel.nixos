@@ -13,7 +13,7 @@
     ../../services/remote-desktop.nix
     ../../services/ssh-server.nix
     ../../services/virt.nix
-
+    ../../services/tailscale.nix
     ../../services/wlans.nix
   ];
 
@@ -24,4 +24,6 @@
   citadel.machines.common.hostName = "alpha";
 
   citadel.wlans.home.enable = true;
+
+  citadel.tailscale.enable = true;
 }

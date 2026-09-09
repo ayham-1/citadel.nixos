@@ -17,12 +17,12 @@
       generateKey = false;
     };
     secrets = lib.mkMerge [
-      {
+      (lib.mkIf config.citadel.tailscale.enable {
         "private_keys/tailscale" = {
           mode = "0400";
           path = "/root/.tailscale.key";
         };
-      }
+      })
     ];
   };
 }

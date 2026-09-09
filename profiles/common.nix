@@ -15,12 +15,6 @@
   # mount tmpfs on /tmp
   boot.tmp.useTmpfs = true;
 
-  # tailscale for all!
-  services.tailscale.enable = true;
-  #services.tailscale.authKeyParameters.ephemeral = true;
-  services.tailscale.authKeyFile = "/root/.tailscale.key";
-  networking.firewall.trustedInterfaces = ["tailscale0"];
-
   # centrally manage users
   users.mutableUsers = false;
 

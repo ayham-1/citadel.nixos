@@ -21,12 +21,6 @@
           owner = config.users.users.ayham.name;
           group = config.users.users.ayham.group;
         };
-        #"private_keys/u2f_keys" = {
-        #  mode = "0400";
-        #  path = "/home/ayham/.config/Yubico/u2f_keys";
-        #  owner = config.users.users.ayham.name;
-        #  group = config.users.users.ayham.group;
-        #};
       }
     ];
   };

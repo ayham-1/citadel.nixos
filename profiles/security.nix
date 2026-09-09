@@ -13,7 +13,7 @@
   networking.firewall.enable = true;
   networking.firewall.allowPing = false;
 
-  # Apparmor
+  # Apparmor (does not work for nixos yet)
   #security.apparmor.enable = true;
   #security.apparmor.packages = with pkgs; [ apparmor-profiles roddhjav-apparmor-rules ];
   #security.apparmor.aa-alias-manager.enable = true;
