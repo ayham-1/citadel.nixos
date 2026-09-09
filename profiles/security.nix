@@ -1,23 +1,13 @@
 {
-  config,
   pkgs,
   lib,
-  aa-alias-manager,
   ...
 }: {
-  imports = [aa-alias-manager.nixosModules.default];
-
   environment.memoryAllocator.provider = "libc";
 
   # Setup firewall
   networking.firewall.enable = true;
   networking.firewall.allowPing = false;
-
-  # Apparmor (does not work for nixos yet)
-  #security.apparmor.enable = true;
-  #security.apparmor.packages = with pkgs; [ apparmor-profiles roddhjav-apparmor-rules ];
-  #security.apparmor.aa-alias-manager.enable = true;
-  #services.dbus.apparmor = "enabled";
 
   # General Hardening
   security.forcePageTableIsolation = true;
@@ -32,9 +22,6 @@
   # Network Hardening
   networking.networkmanager.ethernet.macAddress = "permanent";
   networking.networkmanager.wifi.macAddress = "random";
-
-  # Isolate
-  #security.isolate.enable = true;
 
   # Kernel Hardening
   #boot.kernelPackages = pkgs.linuxPackages_hardened; # causes problems with hardware

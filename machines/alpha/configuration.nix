@@ -2,9 +2,9 @@
   imports = [
     ../common/configuration.nix
 
-    ../../profiles/impermanence.nix
     ./hardware.nix
 
+    ../../profiles/impermanence.nix
     ../../profiles/social.nix
     ../../profiles/development.nix
     ../../profiles/office.nix
@@ -26,4 +26,9 @@
   citadel.wlans.home.enable = true;
 
   citadel.tailscale.enable = true;
+
+  citadel.remote.server.enable = true;
+
+  citadel.ssh.server.enable = true;
+  citadel.ssh.server.enableYubikeyAccess = true;
 }

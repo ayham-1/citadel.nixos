@@ -15,7 +15,6 @@
 
     treesitter.enable = true;
     autocomplete.nvim-cmp.enable = true;
-    #autocomplete.blink-cmp.enable = true;
 
     lsp = {
       enable = true;
@@ -26,7 +25,6 @@
     };
 
     mini = {
-      #animate.enable = true;
       indentscope.enable = true;
     };
 
@@ -79,6 +77,24 @@
       rust.enable = true;
       zig.enable = true;
       clang.enable = true;
+    };
+
+    notes = {
+      neorg = {
+        enable = true;
+        treesitter.enable = true;
+        setupOpts.load = {
+          "core.defaults" = {};
+          "core.concealer" = {};
+          "core.dirman" = {
+            config = {
+              workspaces.notes = "/data/src/notes/";
+              default_workspace = "notes";
+              index = "index.norg";
+            };
+          };
+        };
+      };
     };
 
     projects.project-nvim.enable = true;

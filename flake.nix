@@ -19,10 +19,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    aa-alias-manager = {
-      url = "github:LordGrimmauld/aa-alias-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     impermanence.url = "github:nix-community/impermanence";
     nvf.url = "github:notashelf/nvf";
     niri = {
@@ -34,7 +30,6 @@
   outputs = {
     self,
     nixpkgs,
-    #nixpkgs-unstable,
     nur,
     flake-utils,
     home-manager,
@@ -42,7 +37,6 @@
     stylix,
     sops-nix,
     impermanence,
-    aa-alias-manager,
     nvf,
     niri,
     ...
@@ -113,28 +107,29 @@
           ];
       };
 
-      gamma = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = attrs;
-        modules =
-          commonModules
-          ++ [
-            ./machines/gamma/configuration.nix
-            ./users/ayham/base.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = null;
+      # tbd: whenever gamma is meant to be remade
+      #gamma = nixpkgs.lib.nixosSystem {
+      #  inherit system;
+      #  specialArgs = attrs;
+      #  modules =
+      #    commonModules
+      #    ++ [
+      #      ./machines/gamma/configuration.nix
+      #      ./users/ayham/base.nix
+      #      home-manager.nixosModules.home-manager
+      #      {
+      #        home-manager.useGlobalPkgs = true;
+      #        home-manager.useUserPackages = true;
+      #        home-manager.backupFileExtension = null;
 
-              home-manager.sharedModules = [
-                niri.homeModuels.niri
-              ];
+      #        home-manager.sharedModules = [
+      #          niri.homeModuels.niri
+      #        ];
 
-              home-manager.users.ayham = import ./users/ayham/home.nix;
-            }
-          ];
-      };
+      #        home-manager.users.ayham = import ./users/ayham/home.nix;
+      #      }
+      #    ];
+      #};
 
       labor = nixpkgs.lib.nixosSystem {
         inherit system;

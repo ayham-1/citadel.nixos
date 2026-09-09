@@ -1,15 +1,8 @@
 {
-  config,
-  pkgs,
   lib,
-  home-manager,
+  config,
   ...
-}: let
-  identityFiles = ["id_ayham"];
-in {
-  #programs.ssh = {
-  #  startAgent = true;
-  #};
+}: {
   home-manager.users.ayham = {pkgs, ...}: {
     programs.ssh = {
       enable = true;
@@ -22,16 +15,21 @@ in {
           user = "git";
           forwardAgent = true;
           identitiesOnly = true;
-          identityFile = lib.lists.forEach identityFiles (file: "/home/ayham/.ssh/${file}");
         };
         "code.ovgu" = {
           host = "code.ovgu.de";
           user = "git";
           forwardAgent = true;
           identitiesOnly = true;
-          identityFile = lib.lists.forEach identityFiles (file: "/home/ayham/.ssh/${file}");
+        };
+        "*" = {
+          identityFile = "~/.ssh/id_ed25519_sk";
         };
       };
     };
+
+    home.file.".ssh/authorized_keys".text = lib.mkIf config.citadel.ssh.server.enableYubikeyAccess ''
+      sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBEuye7nS9bwj75Io0XnlEjyKJvX7g5zmQh2vuI2hVZ2AAAABHNzaDo= yubikey-global-ssh
+    '';
   };
 }
