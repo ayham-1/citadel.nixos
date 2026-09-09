@@ -1,38 +1,25 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: {
   imports = [
     ../../profiles/common.nix
-    ../../profiles/communication.nix
-    ../../profiles/development.nix
-    ../../profiles/dev-tools.nix
-    ../../profiles/security.nix
-    ../../profiles/office.nix
-    ../../profiles/secrets.nix
     ../../profiles/impermanence.nix
-    ../../profiles/bluetooth.nix
+    ../../profiles/security.nix
+    ../../profiles/secrets.nix
+    ../../services/localization.nix
+    ../../services/nix.nix
 
     ../../desktop/common.nix
     ../../desktop/sound.nix
-    ../../desktop/sway.nix
 
-    ../../services/nix.nix
-    ../../services/remote-desktop.nix
-    ../../services/localization.nix
     ../../services/ssh.nix
-    ../../services/ssh-server.nix
-    ../../services/vpn.nix
-    ../../services/ntp.nix
-    ../../services/virt.nix
-    ../../services/wifi.nix
+    ../../services/time.nix
+    ../../services/network.nix
     ../../services/fonts.nix
     ../../services/power.nix
     ../../services/earlyoom.nix
-    ../../services/tor.nix
-    ../../services/wlans.nix
 
     ./hardware.nix
   ];

@@ -1,15 +1,10 @@
 {
   config,
   pkgs,
-  lib,
   sops-nix,
   ...
 }: {
   imports = [
-    ../services/grub.nix
-    ../services/ntp.nix
-    ../services/localization.nix
-
     sops-nix.nixosModules.sops
   ];
 

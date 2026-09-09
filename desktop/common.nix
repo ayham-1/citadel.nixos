@@ -47,11 +47,6 @@
   hardware.opentabletdriver.enable = true;
   services.udev.packages = [pkgs.opentabletdriver];
 
-  # mainly for stlink
-  #services.udev.extraRules = ''
-  #  SUBSYSTEM=="usb", MODE="0666"
-  #'';
-
   # magic FHS
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = pkgs.steam-run.args.multiPkgs pkgs;

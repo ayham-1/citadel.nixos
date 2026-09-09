@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -11,30 +10,33 @@
     clang
     clang-tools
     gdb
-    stm32flash
-    stm32loader
-    stm32cubemx
     zig
     git-lfs
     gcc-arm-embedded
     kicad
     godot
-    savvycan
     qucs-s
     drawio
+    libresprite
     vscode
+    pureref
+    godot
+    blender
+    blockbench
+    pixelorama
   ];
+
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "drawio"
       "vscode"
     ];
 
-  services.udev.packages = [
-    pkgs.stlink
-  ];
+  #services.udev.packages = [
+  #  pkgs.stlink
+  #];
 
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", MODE="0666"
-  '';
+  #services.udev.extraRules = ''
+  #  SUBSYSTEM=="usb", MODE="0666"
+  #'';
 }

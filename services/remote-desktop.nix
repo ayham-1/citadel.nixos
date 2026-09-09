@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{pkgs, ...}: {
   services.xserver.enable = true;
   services.xserver.displayManager.startx.enable = true;
   services.xserver.windowManager.icewm.enable = true;
