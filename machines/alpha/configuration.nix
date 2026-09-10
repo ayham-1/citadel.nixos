@@ -30,5 +30,5 @@
   citadel.remote.server.enable = true;
 
   citadel.ssh.server.enable = true;
-  citadel.ssh.server.enableYubikeyAccess = true;
+  citadel.ssh.server.enableYubikeyAccess = false;
 }

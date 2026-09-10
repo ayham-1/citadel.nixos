@@ -98,5 +98,25 @@
     };
 
     projects.project-nvim.enable = true;
+
+    extraPlugins = with pkgs.vimPlugins; {
+      vimwiki = {
+        package = vimwiki;
+      };
+    };
+
+    luaConfigPost = ''
+      -- Configure VimWiki settings using standard global variables
+      vim.g.vimwiki_list = {
+        {
+          path = '/data/src/vimwiki/',
+          syntax = 'markdown',
+          ext = '.md',
+        }
+      }
+
+      -- Prevent VimWiki from overriding all markdown files outside of your wiki directory
+      vim.g.vimwiki_global_ext = 0
+    '';
   };
 }
