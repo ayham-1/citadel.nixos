@@ -3,7 +3,7 @@
     xdg.portal = {
       enable = true;
       configPackages = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-wlr];
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome];
     };
 
     services.flameshot = {

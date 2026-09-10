@@ -1,5 +1,5 @@
-{ lib, ... }: {
-  imports = [ 
+{lib, ...}: {
+  imports = [
     ./steam.nix
     ./kitty.nix
     ./git.nix
@@ -10,6 +10,7 @@
     ./tmux.nix
     ./zsh.nix
     ./rofi.nix
+    ./fastfetch.nix
   ];
 
   # set defaults of optional Programs

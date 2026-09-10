@@ -27,6 +27,7 @@
     pciutils
     eduvpn-client
     keepassxc
+    wdisplays
 
     dejavu_fonts
     noto-fonts-color-emoji
@@ -35,6 +36,13 @@
     sxiv
 
     gimp
+
+    wl-kbptr
+    kitty
+    mako
+    grim
+    slurp
+    wl-clipboard
   ];
   programs.thunderbird.enable = true;
 

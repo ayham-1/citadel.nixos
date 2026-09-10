@@ -2,8 +2,6 @@
   config,
   lib,
   pkgs,
-  home-manager,
-  stylix,
   ...
 }: {
   options = {
@@ -12,8 +10,20 @@
 
   config = lib.mkIf config.citadel.users.wm.niri.enable {
     environment.systemPackages = with pkgs; [
+      grim
+      slurp
+      satty
       xwayland-satellite # xwayland support
     ];
+
+    xdg.portal = {
+      enable = true;
+
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+      ];
+    };
 
     programs.niri.enable = true;
     home-manager.users.ayham = {
@@ -143,6 +153,11 @@
             "super+Return".action.spawn = ["kitty"];
             "super+D".action.spawn = ["fuzzel"];
             "super+Shift+P".action.spawn = ["swaylock"];
+            "super+Shift+D".action.spawn = [
+              "sh"
+              "-c"
+              ''grim -g "$(slurp)" - | satty -f -''
+            ];
 
             # Window Actions
             "super+Q".action.close-window = {};
@@ -212,6 +227,18 @@
             "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "10%-"];
 
             "super+Shift+E".action.quit = {};
+
+            # Move focused window to floating
+            "super+Ctrl+F".action.move-window-to-floating = {};
+
+            # Move floating window back to tiling
+            "Mod+Ctrl+T".action.move-window-to-tiling = {};
+
+            # Show important keybindings
+            "super+Shift+Slash".action.show-hotkey-overlay = {};
+
+            # Toggle overview
+            "super+O".action.toggle-overview = {};
           };
         };
       };
