@@ -12,7 +12,7 @@
     defaultSopsFormat = "yaml";
     validateSopsFiles = false;
     age = {
-      # needs to be copied into the machine host and the secrets.yaml to the citadel repo.
+      # needs to be copied into the install machine and the secrets.yaml
       keyFile = "/persistent/etc/sops/keys.txt";
       generateKey = false;
     };

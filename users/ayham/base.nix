@@ -1,9 +1,7 @@
 {
   config,
   pkgs,
-  lib,
   home-manager,
-  sops-nix,
   ...
 }: {
   imports = [
@@ -20,7 +18,6 @@
 
   users.users.ayham = {
     isNormalUser = true; # just making sure
-    #home = "/home/ayham";
     description = "ayham";
     extraGroups = [
       "wheel"
@@ -40,14 +37,10 @@
     ];
     hashedPasswordFile = config.sops.secrets.ayham-password.path;
     shell = pkgs.zsh;
-
-    openssh.authorizedKeys.keys = [
-      (builtins.readFile ./keys/id_ayham.pub) # allow self to access self
-    ];
   };
   programs.zsh.enable = true;
 
-  environment.systemPackages = with pkgs; [home-manager];
+  environment.systemPackages = [home-manager];
 
   services.printing.enable = true;
 }
