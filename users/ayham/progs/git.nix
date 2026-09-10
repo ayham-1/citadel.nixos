@@ -14,6 +14,11 @@
       signing.key = "8C38DD3A3030F8AEB8A9A2BC783F6DE277DA7BFF";
       signing.signByDefault = true;
       diff-so-fancy.enable = true;
+      extraConfig = {
+        safe = {
+          directory = "*";
+        };
+      };
     };
     programs.diff-so-fancy.enableGitIntegration = true;
   };

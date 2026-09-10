@@ -146,7 +146,7 @@
               home-manager.backupFileExtension = null;
 
               home-manager.sharedModules = [
-                niri.homeModuels.niri
+                niri.homeModules.niri
               ];
 
               home-manager.users.ayham = import ./users/ayham/home.nix;

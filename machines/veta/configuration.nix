@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ../common/configuration.nix
 
