@@ -1,9 +1,6 @@
 {
   config,
-  pkgs,
   lib,
-  home-manager,
-  stylix,
   ...
 }: {
   options = {
@@ -12,19 +9,6 @@
 
   config = lib.mkIf config.citadel.users.wm.sway.enable {
     home-manager.users.ayham = {
-      programs.swaylock.enable = true;
-
-      services.mako.enable = true;
-      services.swayidle = {
-        enable = true;
-        events = [
-          {
-            event = "lock";
-            command = "swaylock";
-          }
-        ];
-      };
-
       stylix.targets.sway.enable = true;
       wayland.windowManager.sway = let
         mod = "Mod4";

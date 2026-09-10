@@ -6,24 +6,32 @@
   home-manager.users.ayham = {pkgs, ...}: {
     programs.ssh = {
       enable = true;
-      addKeysToAgent = "yes";
-      enableDefaultConfig = true;
+      enableDefaultConfig = false;
 
-      matchBlocks = {
-        "git" = {
-          host = "github.com";
-          user = "git";
-          forwardAgent = true;
-          identitiesOnly = true;
-        };
-        "code.ovgu" = {
-          host = "code.ovgu.de";
-          user = "git";
-          forwardAgent = true;
-          identitiesOnly = true;
-        };
+      settings = {
         "*" = {
-          identityFile = "~/.ssh/id_ed25519_sk";
+          ForwardAgent = false;
+          AddKeysToAgent = "yes";
+          Compression = false;
+          ServerAliveInterval = 0;
+          ServerAliveCountMax = 3;
+          HashKnownHosts = true;
+          UserKnownHostsFile = "~/.ssh/known_hosts";
+          ControlMaster = "no";
+          ControlPath = "~/.ssh/master-%r@%n:%p";
+          ControlPersist = "no";
+          IdentityFile = "~/.ssh/id_ed25519_sk";
+        };
+        "git" = {
+          Host = "github.com";
+          User = "git";
+          IdentitiesOnly = true;
+        };
+
+        "code.ovgu" = {
+          Host = "code.ovgu.de";
+          User = "git";
+          identitiesOnly = true;
         };
       };
     };

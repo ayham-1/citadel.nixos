@@ -1,8 +1,6 @@
 {
   config,
   pkgs,
-  lib,
-  stylix,
   ...
 }: {
   hardware.acpilight.enable = true;
@@ -21,9 +19,9 @@
     bitwarden-desktop
     bitwarden-cli
     mpv
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
+    thunar
+    thunar-archive-plugin
+    thunar-volman
     tigervnc
     opentabletdriver
     pciutils
@@ -72,7 +70,7 @@
       name = "Bibata-Modern-Classic";
       size = 48;
     };
-    iconTheme = {
+    icons = {
       enable = true;
       package = pkgs.papirus-icon-theme;
       dark = "Papirus-Dark";

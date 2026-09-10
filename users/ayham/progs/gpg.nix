@@ -26,7 +26,7 @@ in {
       enableSshSupport = true;
       enableExtraSocket = true;
       grabKeyboardAndMouse = true;
-      pinentryPackage = pkgs.pinentry-curses;
+      pinentry.package = pkgs.pinentry-curses;
       sshKeys = ["${keyId}"];
     };
   };

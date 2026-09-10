@@ -14,12 +14,9 @@
     programs.steam = {
       enable = true;
       gamescopeSession.enable = true;
-      remotePlay.openFirewall =
-        true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall =
-        true; # Open ports in the firewall for Source Dedicated Server
-      localNetworkGameTransfers.openFirewall =
-        true; # Open ports in the firewall for Steam Local Network Game Transfers
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
 
       extraCompatPackages = with pkgs; [
         proton-ge-bin
@@ -28,10 +25,10 @@
         extraPkgs = pkgs:
           with pkgs; [
             gamemode
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
+            libxcursor
+            libxi
+            libxinerama
+            libxscrnsaver
             libpng
             libpulseaudio
             libvorbis

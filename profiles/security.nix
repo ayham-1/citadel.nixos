@@ -69,7 +69,7 @@
     control = "required";
 
     # shows "Touch your security key"
-    cue = true;
+    settings.cue = true;
 
     settings = {
       origin = "pam://yubi";

@@ -1,11 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  home-manager,
-  stylix,
-  ...
-}: {
+{pkgs, ...}: {
   home-manager.users.ayham = {
     xdg.portal = {
       enable = true;
@@ -13,9 +6,7 @@
       extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
 
-    # flameshot
     services.flameshot = {
-      # Also installs/enables flameshot
       enable = true;
       settings = {
         General = {
@@ -23,18 +14,11 @@
       };
     };
 
-    services.mako.enable = true;
-
     programs.swaylock.enable = true;
-
+    services.mako.enable = true;
     services.swayidle = {
       enable = true;
-      events = [
-        {
-          event = "lock";
-          command = "swaylock";
-        }
-      ];
+      events.lock = "swaylock";
     };
   };
 }

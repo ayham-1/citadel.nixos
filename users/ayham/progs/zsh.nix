@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  home-manager,
-  ...
-}: {
+{pkgs, ...}: {
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [fzf gnupg oh-my-zsh];
 
@@ -16,7 +11,6 @@
         strategy = ["completion" "history"];
       };
       syntaxHighlighting.enable = true;
-      #defaultKeymap = "vicmd";
       autocd = true;
       oh-my-zsh = {
         enable = true;
@@ -25,11 +19,7 @@
       shellAliases = {
         myip = "curl ipinfo.io/ip";
         ll = "ls -al";
-        ide = "nix run --refresh github:ayham-1/ide";
       };
-      initExtra = ''
-        export KEYTIMEOUT=1  # makes ESC response near-instant
-      '';
       history.size = 10000;
     };
   };

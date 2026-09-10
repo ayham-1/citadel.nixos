@@ -55,6 +55,7 @@
     sops
     age
     ssh-to-age
+    nixos-anywhere
   ];
 
   programs.bash.completion.enable = true;
