@@ -16,7 +16,6 @@
 
     ../../services/grub.nix
     ../../services/remote-desktop.nix
-    ../../services/ssh-server.nix
     ../../services/tailscale.nix
     ../../services/wlans.nix
   ];
