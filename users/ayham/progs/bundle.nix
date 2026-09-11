@@ -11,6 +11,7 @@
     ./zsh.nix
     ./rofi.nix
     ./fastfetch.nix
+    ./foot.nix
   ];
 
   # set defaults of optional Programs

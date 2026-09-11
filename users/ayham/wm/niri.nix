@@ -10,9 +10,6 @@
 
   config = lib.mkIf config.citadel.users.wm.niri.enable {
     environment.systemPackages = with pkgs; [
-      grim
-      slurp
-      satty
       xwayland-satellite # xwayland support
     ];
 
@@ -150,7 +147,7 @@
 
           binds = {
             # Application Shortcuts
-            "super+Return".action.spawn = ["kitty"];
+            "super+Return".action.spawn = ["foot"];
             "super+D".action.spawn = ["fuzzel"];
             "super+Shift+P".action.spawn = ["swaylock"];
             "super+Shift+D".action.spawn = [

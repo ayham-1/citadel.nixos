@@ -11,7 +11,7 @@
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
-      "/etc/NetworkManager/system-connections"
+      # "/etc/NetworkManager/system-connections" # to save networks permanently
       {
         directory = "/var/lib/colord";
         user = "colord";

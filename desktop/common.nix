@@ -42,6 +42,7 @@
     mako
     grim
     slurp
+    satty
     wl-clipboard
   ];
   programs.thunderbird.enable = true;

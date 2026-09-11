@@ -26,7 +26,6 @@
     dmenu
     wmenu
     kanshi
-    flameshot
   ];
 
   services.seatd.enable = true;

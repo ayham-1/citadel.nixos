@@ -15,7 +15,7 @@
         terminal = "kitty";
         #menu = "dmenu_path | wmenu -b | xargs swaymsg exec --";
         menu = "rofi -show drun";
-        screenshot = ''flameshot gui'';
+        screenshot = ''grim -g $(slurp) - | satty -f -'';
         lock = "swaylock";
         kbptr = "wl-kbptr -o modes=floating,click";
 

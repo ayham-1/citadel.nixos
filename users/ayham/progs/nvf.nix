@@ -44,6 +44,17 @@
       sleuth.enable = true;
       smart-splits.enable = true;
       undotree.enable = true;
+      images = {
+        image-nvim = {
+          enable = true;
+          setupOpts = {
+            backend = "sixel";
+          };
+        };
+        img-clip = {
+          enable = true;
+        };
+      };
     };
 
     git.enable = true;
