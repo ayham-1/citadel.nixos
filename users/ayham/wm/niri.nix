@@ -147,7 +147,7 @@
 
           binds = {
             # Application Shortcuts
-            "super+Return".action.spawn = ["foot"];
+            "super+Return".action.spawn = ["kitty"];
             "super+D".action.spawn = ["fuzzel"];
             "super+Shift+P".action.spawn = ["swaylock"];
             "super+Shift+D".action.spawn = [

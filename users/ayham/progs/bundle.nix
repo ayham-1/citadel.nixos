@@ -12,6 +12,7 @@
     ./rofi.nix
     ./fastfetch.nix
     ./foot.nix
+    ./kde-connect.nix
   ];
 
   # set defaults of optional Programs

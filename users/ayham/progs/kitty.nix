@@ -5,17 +5,34 @@
       enableGitIntegration = true;
       environment = {"LS_COLORS" = "1";};
       settings = {
+        allow_remote_control = false;
+
+        # Window
+        window_padding_width = 8;
+        hide_window_decorations = "yes";
+
+        # Cursor
+        cursor_shape = "beam";
+        cursor_shape_unfocused = "hollow";
+        cursor_blink_interval = -1;
+
+        # Scrollback
         scrollback_lines = 10000;
+        scrollbar = "always";
+
+        # Performance
+        sync_to_monitor = true;
+
+        # Bell
         enable_audio_bell = false;
-        update_check_interval = 0;
-        cursor_trail = 3;
-        cursor_trail_decay = "0.1 0.4";
-        cursor_trail_start_threshold = 2;
-        cursor_shape = "block";
-        cursor_blink_interval = "-1";
-        cursor_stop_blinking_after = "15.0";
+
+        # Tabs
+        tab_bar_edge = "bottom";
+        tab_bar_style = "powerline";
+
+        # URLs
+        url_style = "curly";
       };
-      font.size = lib.mkDefault 10;
       shellIntegration.enableBashIntegration = true;
       shellIntegration.enableZshIntegration = true;
     };

@@ -48,7 +48,7 @@
         image-nvim = {
           enable = true;
           setupOpts = {
-            backend = "sixel";
+            backend = "kitty";
           };
         };
         img-clip = {

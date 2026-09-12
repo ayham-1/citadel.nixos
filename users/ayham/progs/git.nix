@@ -1,10 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
-  home-manager,
-  ...
-}: {
   home-manager.users.ayham = {pkgs, ...}: {
     programs.git = {
       enable = true;
