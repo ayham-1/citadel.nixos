@@ -56,6 +56,7 @@
     age
     ssh-to-age
     nixos-anywhere
+    disko
   ];
 
   programs.bash.completion.enable = true;

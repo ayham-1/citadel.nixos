@@ -25,6 +25,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -39,17 +43,15 @@
     impermanence,
     nvf,
     niri,
+    disko,
     ...
   } @ attrs: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      #config.allowUnfree = true;
-    };
     commonModules = [
       stylix.nixosModules.stylix
       nur.modules.nixos.default
       nvf.nixosModules.default
+      disko.nixosModules.disko
     ];
   in {
     # neovim

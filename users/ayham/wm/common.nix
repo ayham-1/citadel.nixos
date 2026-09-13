@@ -8,9 +8,13 @@
 
     programs.swaylock.enable = true;
     services.mako.enable = true;
-    services.swayidle = {
+    services.swayidle = let
+      cmdlock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+    in {
       enable = true;
-      events.lock = "swaylock";
+
+      events.lock = cmdlock;
+      events.before-sleep = cmdlock;
     };
   };
 }

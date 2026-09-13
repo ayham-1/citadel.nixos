@@ -149,7 +149,7 @@
             # Application Shortcuts
             "super+Return".action.spawn = ["kitty"];
             "super+D".action.spawn = ["fuzzel"];
-            "super+Shift+P".action.spawn = ["swaylock"];
+            "super+P".action.spawn = ["swaylock"];
             "super+Shift+D".action.spawn = [
               "sh"
               "-c"
