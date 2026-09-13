@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   nixos-hardware,
   ...
@@ -14,6 +13,11 @@
 
     ../common/disk-encrypted-uefi.nix
   ];
+
+  citadel.disk.encrypted.uefi = {
+    enable = true;
+    device = "/dev/sda";
+  };
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];

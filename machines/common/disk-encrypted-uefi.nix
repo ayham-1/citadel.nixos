@@ -17,17 +17,22 @@
 
         efi = {
           efiSysMountPoint = "/efi";
-          canTouchEfiVariables = true;
+          canTouchEfiVariables = false;
         };
 
         grub = {
           enable = true;
           enableCryptodisk = true;
           efiSupport = true;
-          efiInstallAsRemovable = false;
+          efiInstallAsRemovable = true;
           devices = ["nodev"];
         };
       };
+    };
+
+    fileSystems = {
+      "/".neededForBoot = true;
+      "/persistent".neededForBoot = true;
     };
 
     disko.devices = {
@@ -48,13 +53,15 @@
                   mountOptions = ["umask=0077"];
                 };
               };
-              CRYPTBOOT = {
+              cryptboot = {
                 size = "2G";
                 content = {
                   type = "luks";
-                  name = "CRYPTBOOT";
+                  name = "cryptboot";
 
                   extraFormatArgs = ["--type" "luks1"];
+
+                  passwordFile = "/tmp/secret.boot.key";
 
                   content = {
                     type = "filesystem";
@@ -63,15 +70,17 @@
                   };
                 };
               };
-              CRYPTROOT = {
+              cryptroot = {
                 size = "100%";
                 content = {
                   type = "luks";
-                  name = "CRYPTROOT";
+                  name = "cryptroot";
 
                   settings = {
                     allowDiscards = true;
                   };
+
+                  passwordFile = "/tmp/secret.root.key";
 
                   content = {
                     type = "btrfs";

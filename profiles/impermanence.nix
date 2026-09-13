@@ -43,16 +43,16 @@
       requiredBy = ["initrd.target"];
       before = ["sysroot.mount"];
 
-      requires = ["${utils.escapeSystemdPath "/dev/mapper/root"}.device"];
+      requires = ["${utils.escapeSystemdPath "/dev/mapper/cryptroot"}.device"];
       after = [
-        "${utils.escapeSystemdPath "/dev/mapper/root"}.device"
+        "${utils.escapeSystemdPath "/dev/mapper/cryptroot"}.device"
         "cryptsetup.target"
         "local-fs-pre.target"
       ];
 
       script = ''
         mkdir /btrfs_tmp
-        mount /dev/mapper/root /btrfs_tmp
+        mount /dev/mapper/cryptroot /btrfs_tmp
         if [[ -e /btrfs_tmp/root ]]; then
           mkdir -p /btrfs_tmp/old_roots
           timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")

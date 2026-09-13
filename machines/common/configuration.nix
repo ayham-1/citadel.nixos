@@ -20,19 +20,17 @@
     ../../services/fonts.nix
     ../../services/power.nix
     ../../services/earlyoom.nix
-
-    ./hardware.nix
   ];
 
   options = {
-    citadel.machines.common.hostName = lib.mkOption {
+    citadel.machine.hostName = lib.mkOption {
       type = lib.types.str;
-      default = "commonHostName";
+      default = "HostName";
     };
   };
 
   config = {
-    networking.hostName = config.citadel.machines.common.hostName;
+    networking.hostName = config.citadel.machine.hostName;
     system.stateVersion = "25.05";
   };
 }

@@ -149,7 +149,8 @@
             # Application Shortcuts
             "super+Return".action.spawn = ["kitty"];
             "super+D".action.spawn = ["fuzzel"];
-            "super+P".action.spawn = ["swaylock"];
+            "super+P".action.spawn = ["loginctl lock-session"];
+            "super+Shift+P".action.spawn = ["systemctl suspend"];
             "super+Shift+D".action.spawn = [
               "sh"
               "-c"
