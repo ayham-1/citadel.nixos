@@ -6,6 +6,7 @@
   options = {
     citadel.wlans.home.enable = lib.mkEnableOption "Citadel: wlan home";
     citadel.wlans.ovgu.enable = lib.mkEnableOption "Citadel: wlan ovgu";
+    citadel.wlans.hotspot.enable = lib.mkEnableOption "Citadel: wlan hotspot";
     citadel.wlans.hti.enable = lib.mkEnableOption "Citadel: wlan hti";
   };
 

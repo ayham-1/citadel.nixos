@@ -1,6 +1,7 @@
 {
   impermanence,
   home-manager,
+  username,
   ...
 }: {
   imports = [
@@ -8,13 +9,14 @@
     home-manager.nixosModules.home-manager
   ];
 
-  home-manager.users.ayham = {
+  home-manager.users.${username} = {
     home.persistence."/persistent" = {
       directories = [
         "desk"
         "pix"
         "dox"
         "muz"
+        ".config/kdeconnect/"
         ".cache/dl/"
         {
           directory = ".gnupg";

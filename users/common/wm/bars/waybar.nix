@@ -1,9 +1,7 @@
 {
   config,
-  pkgs,
   lib,
-  home-manager,
-  stylix,
+  username,
   ...
 }: {
   options = {
@@ -13,7 +11,7 @@
   config = lib.mkIf config.citadel.users.wm.bars.waybar.enable {
     programs.waybar.enable = true;
 
-    home-manager.users.ayham = {
+    home-manager.users.${username} = {
       stylix.targets.waybar.enableCenterBackColors = true;
       stylix.targets.waybar.enableRightBackColors = true;
       stylix.targets.waybar.enableLeftBackColors = true;

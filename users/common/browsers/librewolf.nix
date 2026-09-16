@@ -2,8 +2,7 @@
   config,
   pkgs,
   lib,
-  home-manager,
-  stylix,
+  username,
   ...
 }: {
   options = {
@@ -11,7 +10,7 @@
   };
 
   config = lib.mkIf config.citadel.users.browsers.librewolf.enable {
-    home-manager.users.ayham = {
+    home-manager.users.${username} = {
       programs.librewolf = {
         enable = true;
         nativeMessagingHosts = [pkgs.tridactyl-native];
@@ -189,8 +188,6 @@
               privacy-badger
               unpaywall
               terms-of-service-didnt-read
-              steam-database
-              augmented-steam
             ];
           };
         };

@@ -1,5 +1,5 @@
-{...}: {
-  home-manager.users.ayham = {pkgs, ...}: {
+{username, ...}: {
+  home-manager.users.${username} = {pkgs, ...}: {
     programs.fastfetch = {
       enable = true;
       settings = {

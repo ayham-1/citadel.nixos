@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }: {
   options = {
@@ -23,7 +24,7 @@
     };
 
     programs.niri.enable = true;
-    home-manager.users.ayham = {
+    home-manager.users.${username} = {
       programs.niri = {
         enable = true;
         package = pkgs.niri;

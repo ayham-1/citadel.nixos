@@ -51,13 +51,16 @@
       nur.modules.nixos.default
       nvf.nixosModules.default
       disko.nixosModules.disko
+      home-manager.nixosModules.home-manager
     ];
+    userLib = import ./lib/users.nix {
+      inherit home-manager niri;
+    };
   in {
-    # neovim
     packages."x86_64-linux".default =
       (nvf.lib.neovimConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [./users/ayham/progs/nvf.nix];
+        modules = [./services/nvf.nix];
       }).neovim;
 
     nixosConfigurations = {
@@ -68,21 +71,8 @@
           commonModules
           ++ [
             ./machines/alpha/configuration.nix
-            ./users/ayham/base.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = null;
-              home-manager.extraSpecialArgs = {inherit attrs;};
-
-              home-manager.sharedModules = [
-                niri.homeModules.niri
-              ];
-
-              home-manager.users.ayham = import ./users/ayham/home.nix;
-            }
-          ];
+          ]
+          ++ userLib.mkUsers ["ayham"];
       };
 
       veta = nixpkgs.lib.nixosSystem {
@@ -92,45 +82,9 @@
           commonModules
           ++ [
             ./machines/veta/configuration.nix
-            ./users/ayham/base.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = null;
-
-              home-manager.sharedModules = [
-                niri.homeModules.niri
-              ];
-
-              home-manager.users.ayham = import ./users/ayham/home.nix;
-            }
-          ];
+          ]
+          ++ userLib.mkUsers ["ayham"];
       };
-
-      # tbd: whenever gamma is meant to be remade
-      #gamma = nixpkgs.lib.nixosSystem {
-      #  inherit system;
-      #  specialArgs = attrs;
-      #  modules =
-      #    commonModules
-      #    ++ [
-      #      ./machines/gamma/configuration.nix
-      #      ./users/ayham/base.nix
-      #      home-manager.nixosModules.home-manager
-      #      {
-      #        home-manager.useGlobalPkgs = true;
-      #        home-manager.useUserPackages = true;
-      #        home-manager.backupFileExtension = null;
-
-      #        home-manager.sharedModules = [
-      #          niri.homeModuels.niri
-      #        ];
-
-      #        home-manager.users.ayham = import ./users/ayham/home.nix;
-      #      }
-      #    ];
-      #};
 
       labor = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -139,20 +93,8 @@
           commonModules
           ++ [
             ./machines/labor/configuration.nix
-            ./users/ayham/base.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = null;
-
-              home-manager.sharedModules = [
-                niri.homeModules.niri
-              ];
-
-              home-manager.users.ayham = import ./users/ayham/home.nix;
-            }
-          ];
+          ]
+          ++ userLib.mkUsers ["ayham"];
       };
     };
   };

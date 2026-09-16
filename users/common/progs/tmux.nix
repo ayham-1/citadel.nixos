@@ -1,8 +1,7 @@
-{ config, pkgs, lib, ... }: {
-  home-manager.users.ayham = { pkgs, ... }: {
+{username, ...}: {
+  home-manager.users.${username} = {pkgs, ...}: {
     programs.tmux = {
       enable = true;
-      terminal = "xterm-kitty";
       shell = "${pkgs.zsh}/bin/zsh";
       prefix = "C-a";
       mouse = true;
@@ -12,7 +11,7 @@
       sensibleOnTop = false;
       aggressiveResize = false;
 
-      plugins = with pkgs.tmuxPlugins; [ sensible sessionist pain-control ];
+      plugins = with pkgs.tmuxPlugins; [sensible sessionist pain-control];
 
       extraConfig = ''
         # Disable bells

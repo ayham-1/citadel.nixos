@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  username,
+  ...
+}: {
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [fzf gnupg oh-my-zsh];
 
-  home-manager.users.ayham = {pkgs, ...}: {
+  home-manager.users.${username} = {pkgs, ...}: {
     programs.zsh = {
       enable = true;
       enableCompletion = true;

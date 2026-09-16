@@ -1,5 +1,9 @@
-{pkgs, ...}: {
-  home-manager.users.ayham = {
+{
+  pkgs,
+  username,
+  ...
+}: {
+  home-manager.users.${username} = {
     xdg.portal = {
       enable = true;
       configPackages = [pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-wlr];

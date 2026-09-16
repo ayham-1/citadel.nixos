@@ -1,4 +1,4 @@
-{
+{username, ...}: {
   programs.kdeconnect.enable = true;
 
   networking.firewall = rec {
@@ -11,7 +11,7 @@
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
-  home-manager.users.ayham = {pkgs, ...}: {
+  home-manager.users.${username} = {pkgs, ...}: {
     services.kdeconnect = {
       enable = true;
       indicator = true;

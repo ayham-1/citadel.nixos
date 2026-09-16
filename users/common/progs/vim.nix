@@ -1,8 +1,7 @@
-{ config, pkgs, lib, home-manager, ... }: {
-  home-manager.users.ayham = { pkgs, ... }: {
+{username, ...}: {
+  home-manager.users.${username} = {pkgs, ...}: {
     programs.vim = {
       enable = true;
-      #defaultEditor = true;
 
       plugins = with pkgs.vimPlugins; [
         vim-ledger

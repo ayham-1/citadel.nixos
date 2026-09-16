@@ -9,8 +9,8 @@
   ];
 
   # initial root password
-  sops.secrets.root-password.neededForUsers = true;
-  users.users.root.hashedPasswordFile = config.sops.secrets.root-password.path;
+  sops.secrets."users/root/password".neededForUsers = true;
+  users.users.root.hashedPasswordFile = config.sops.secrets."users/root/password".path;
 
   # mount tmpfs on /tmp
   boot.tmp.useTmpfs = true;

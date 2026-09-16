@@ -1,5 +1,5 @@
-{lib, ...}: {
-  home-manager.users.ayham = {pkgs, ...}: {
+{username, ...}: {
+  home-manager.users.${username} = {pkgs, ...}: {
     programs.kitty = {
       enable = true;
       enableGitIntegration = true;

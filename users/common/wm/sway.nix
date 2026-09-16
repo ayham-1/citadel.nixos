@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  username,
   ...
 }: {
   options = {
@@ -8,7 +9,7 @@
   };
 
   config = lib.mkIf config.citadel.users.wm.sway.enable {
-    home-manager.users.ayham = {
+    home-manager.users.${username} = {
       stylix.targets.sway.enable = true;
       wayland.windowManager.sway = let
         mod = "Mod4";

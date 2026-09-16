@@ -1,4 +1,4 @@
-{lib, ...}: {
+{...}: {
   imports = [
     ./steam.nix
     ./kitty.nix
@@ -6,7 +6,6 @@
     ./gpg.nix
     ./ssh.nix
     ./vim.nix
-    ./nvim.nix
     ./tmux.nix
     ./zsh.nix
     ./rofi.nix
@@ -14,7 +13,4 @@
     ./foot.nix
     ./kde-connect.nix
   ];
-
-  # set defaults of optional Programs
-  citadel.users.steam.enable = lib.mkDefault true;
 }
