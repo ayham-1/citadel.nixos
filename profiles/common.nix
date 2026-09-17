@@ -51,6 +51,7 @@
     pass
     macchanger
     vim
+    neovim
     gnupg
     sops
     age

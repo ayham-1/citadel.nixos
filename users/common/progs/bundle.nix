@@ -13,4 +13,10 @@
     ./foot.nix
     ./kde-connect.nix
   ];
+
+  programs.nvf = {
+    enable = true;
+    settings = import ./../../../services/nvf.nix;
+    enableManpages = true;
+  };
 }

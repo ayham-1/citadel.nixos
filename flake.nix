@@ -46,6 +46,13 @@
     ...
   } @ attrs: let
     system = "x86_64-linux";
+    ide = nvf.lib.neovimConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [./services/nvf.nix];
+    };
+    userLib = import ./lib/users.nix {
+      inherit home-manager niri;
+    };
     commonModules = [
       stylix.nixosModules.stylix
       nur.modules.nixos.default
@@ -53,15 +60,8 @@
       disko.nixosModules.disko
       home-manager.nixosModules.home-manager
     ];
-    userLib = import ./lib/users.nix {
-      inherit home-manager niri;
-    };
   in {
-    packages."x86_64-linux".default =
-      (nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [./services/nvf.nix];
-      }).neovim;
+    packages.${system}.ide = ide.neovim;
 
     nixosConfigurations = {
       alpha = nixpkgs.lib.nixosSystem {
