@@ -30,4 +30,6 @@
 
   citadel.ssh.server.enable = true;
   citadel.ssh.server.enableYubikeyAccess = true;
+
+  citadel.users.steam.enable = true;
 }
