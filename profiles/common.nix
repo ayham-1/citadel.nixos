@@ -59,6 +59,7 @@
     nixos-anywhere
     disko
     nh
+    sshfs
   ];
 
   programs.bash.completion.enable = true;
