@@ -1,100 +1,110 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
-  environment.memoryAllocator.provider = "libc";
-
-  # Setup firewall
-  networking.firewall.enable = true;
-  networking.firewall.allowPing = false;
-
-  # General Hardening
-  security.forcePageTableIsolation = true;
-  security.sudo.enable = true;
-  #security.audit.enable = true;
-  #security.auditd.enable = true;
-  security.rtkit.enable = true;
-  security.chromiumSuidSandbox.enable = true;
-  security.polkit.enable = true;
-  #security.lockKernelModules = true;
-
-  # Network Hardening
-  networking.networkmanager.ethernet.macAddress = "permanent";
-  networking.networkmanager.wifi.macAddress = "random";
-
-  # Kernel Hardening
-  #boot.kernelPackages = pkgs.linuxPackages_hardened; # causes problems with hardware
-  security.protectKernelImage = true;
-  boot.kernelParams = [
-    "page_alloc.shuffle=1"
-    "lsm=lockdown,yama,apparmor,bpf"
-  ];
-  boot.kernel.sysctl = {
-    "kernel.kptr_restrict" = 2;
-    "kernel.dmesg_restrict" = 1;
-    #"kernel.yama.ptrace_scope" = 1; # steam
-    "kernel.lockdown" = 1;
+  options = {
+    citadel.security.lockOnYubikeyDisconnect = lib.mkEnableOption "Citadel: Lock On Yubikey Disconnect";
   };
 
-  # Sandboxing
-  programs.firejail.enable = true;
+  config = {
+    environment.memoryAllocator.provider = "libc";
 
-  # Yubico
-  environment.systemPackages = with pkgs; [
-    yubioath-flutter
-    yubikey-manager
-    yubikey-personalization # CLI tools for configuring YubiKey
-    yubikey-agent
-    libfido2 # Support for FIDO2/WebAuthn
-    opensc # Smart card support
-    pam_u2f
-  ];
-  hardware.gpgSmartcards.enable = true;
-  services = {
-    udev.packages = with pkgs; [yubikey-personalization];
-    yubikey-agent.enable = true;
-  };
-  security.pam.services = {
-    login.u2fAuth = true;
-    sudo.u2fAuth = true;
+    # Setup firewall
+    networking.firewall.enable = true;
+    networking.firewall.allowPing = false;
 
-    greetd.u2fAuth = true;
-    gdm-password.u2fAuth = true;
-  };
-  security.pam.u2f = {
-    enable = true;
+    # General Hardening
+    security.forcePageTableIsolation = true;
+    security.sudo.enable = true;
+    #security.audit.enable = true;
+    #security.auditd.enable = true;
+    security.rtkit.enable = true;
+    security.chromiumSuidSandbox.enable = true;
+    security.polkit.enable = true;
+    #security.lockKernelModules = true;
 
-    # require both password and key
-    control = "required";
+    # Network Hardening
+    networking.networkmanager.ethernet.macAddress = "permanent";
+    networking.networkmanager.wifi.macAddress = "random";
 
-    # shows "Touch your security key"
-    settings.cue = true;
-
-    settings = {
-      origin = "pam://yubi";
-      authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
-        "ayham"
-        ":Hb99UpQW1PrWwnwX/NiDYhI6rTIy78UVz5UlYA1l4cKT/BzoistDJ3e8ZF6Ofmgiy/ydhUolwv5cCKMZihA/dw==,6wWPAnC1CNvuBzbKYKGMjS0X5S7CYrkz6YtVhIwxYed+mUJwfBQg5IMzfnV0OK3YnBT4cpk0dJyw0tAW4ORkOA==,es256,+presence"
-      ]);
+    # Kernel Hardening
+    #boot.kernelPackages = pkgs.linuxPackages_hardened; # causes problems with hardware
+    security.protectKernelImage = true;
+    boot.kernelParams = [
+      "page_alloc.shuffle=1"
+      "lsm=lockdown,yama,apparmor,bpf"
+    ];
+    boot.kernel.sysctl = {
+      "kernel.kptr_restrict" = 2;
+      "kernel.dmesg_restrict" = 1;
+      #"kernel.yama.ptrace_scope" = 1; # steam
+      "kernel.lockdown" = 1;
     };
-  };
-  security.pam.services.swaylock = {
-    text = ''
-      auth include login
-      account include login
-      password include login
-      session include login
-    '';
-  };
 
-  security.pam.yubico.control = "required";
-  #services.udev.extraRules = ''
-  #  ACTION=="remove",\
-  #   ENV{ID_BUS}=="usb",\
-  #   ENV{ID_MODEL_ID}=="0407",\
-  #   ENV{ID_VENDOR_ID}=="1050",\
-  #   ENV{ID_VENDOR}=="Yubico",\
-  #   RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
-  #'';
+    # Sandboxing
+    programs.firejail.enable = true;
+
+    # Yubico
+    environment.systemPackages = with pkgs; [
+      yubioath-flutter
+      yubikey-manager
+      yubikey-personalization # CLI tools for configuring YubiKey
+      yubikey-agent
+      libfido2 # Support for FIDO2/WebAuthn
+      opensc # Smart card support
+      pam_u2f
+    ];
+    hardware.gpgSmartcards.enable = true;
+    services = {
+      udev.packages = with pkgs; [yubikey-personalization];
+      yubikey-agent.enable = true;
+    };
+    security.pam.services = {
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
+
+      greetd.u2fAuth = true;
+      gdm-password.u2fAuth = true;
+    };
+    security.pam.u2f = {
+      enable = true;
+
+      # require both password and key
+      control = "required";
+
+      # shows "Touch your security key"
+      settings.cue = true;
+
+      settings = {
+        origin = "pam://yubi";
+        authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
+          "ayham"
+          ":Hb99UpQW1PrWwnwX/NiDYhI6rTIy78UVz5UlYA1l4cKT/BzoistDJ3e8ZF6Ofmgiy/ydhUolwv5cCKMZihA/dw==,6wWPAnC1CNvuBzbKYKGMjS0X5S7CYrkz6YtVhIwxYed+mUJwfBQg5IMzfnV0OK3YnBT4cpk0dJyw0tAW4ORkOA==,es256,+presence"
+        ]);
+      };
+    };
+    security.pam.services.swaylock = {
+      text = ''
+        auth include login
+        account include login
+        password include login
+        session include login
+      '';
+    };
+
+    security.pam.yubico.control = "required";
+
+    services.udev.extraRules =
+      lib.mkIf
+      config.citadel.security.lockOnYubikeyDisconnect ''
+        ACTION=="remove",\
+         ENV{ID_BUS}=="usb",\
+         ENV{ID_MODEL_ID}=="0407",\
+         ENV{ID_VENDOR_ID}=="1050",\
+         ENV{ID_VENDOR}=="Yubico",\
+         RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+      '';
+  };
 }
