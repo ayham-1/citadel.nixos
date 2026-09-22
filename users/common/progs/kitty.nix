@@ -8,7 +8,7 @@
         allow_remote_control = false;
 
         # Window
-        window_padding_width = 8;
+        window_padding_width = 0;
         hide_window_decorations = "yes";
 
         # Cursor

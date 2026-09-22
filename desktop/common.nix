@@ -64,14 +64,19 @@
   # theme
   stylix = {
     enable = true;
+    polarity = "dark";
     image = ../assets/wallpaper.png;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/bright.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruber.yaml";
     fonts = {
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
+      };
+      monospace = {
+        package = pkgs.inconsolata;
+        name = "Inconsolata";
       };
     };
     cursor = {
@@ -85,7 +90,6 @@
       dark = "Papirus-Dark";
       light = "Papirus-Light";
     };
-    polarity = "dark";
   };
 
   programs.uwsm = {

@@ -4,8 +4,11 @@
   ...
 }: {
   vim = {
-    theme.enable = true;
-    theme.style = "dark";
+    theme = {
+      enable = true;
+      style = "darker";
+      name = lib.mkForce "gruber-darker";
+    };
 
     spellcheck.enable = true;
     spellcheck.languages = ["en" "de"];
@@ -88,6 +91,9 @@
       rust.enable = true;
       zig.enable = true;
       clang.enable = true;
+      xml.enable = true;
+      bash.enable = true;
+      markdown.enable = true;
     };
 
     notes = {
