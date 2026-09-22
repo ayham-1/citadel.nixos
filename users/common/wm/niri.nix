@@ -30,6 +30,11 @@
         package = pkgs.niri;
 
         settings = {
+          animations = {
+            enable = true;
+            slowdown = 0.25;
+          };
+
           prefer-no-csd = true;
 
           spawn-at-startup = [
@@ -72,11 +77,16 @@
             mouse = {
               natural-scroll = false;
             };
+
+            trackpoint = {
+              enable = true;
+              left-handed = true;
+            };
           };
 
           # Window layout & aesthetics
           layout = {
-            gaps = 8;
+            gaps = 0;
 
             center-focused-column = "never";
 
@@ -108,22 +118,16 @@
             };
           };
 
-          # Environment variables for Wayland apps
-          environment = {
-            NIXOS_OZONE_WL = "1";
-            DISPLAY = ":0";
-          };
-
           # Window rules
           window-rules = [
             {
-              geometry-corner-radius = {
-                top-left = 8.0;
-                top-right = 8.0;
-                bottom-left = 8.0;
-                bottom-right = 8.0;
-              };
-              clip-to-geometry = true;
+              #geometry-corner-radius = {
+              #  top-left = 8.0;
+              #  top-right = 8.0;
+              #  bottom-left = 8.0;
+              #  bottom-right = 8.0;
+              #};
+              #clip-to-geometry = true;
             }
           ];
           outputs = {
@@ -146,12 +150,16 @@
             };
           };
 
+          switch-events = {
+            lid-close.action.spawn = ["systemctl" "suspend"];
+          };
+
           binds = {
             # Application Shortcuts
             "super+Return".action.spawn = ["kitty"];
             "super+D".action.spawn = ["fuzzel"];
-            "super+P".action.spawn = ["loginctl lock-session"];
-            "super+Shift+P".action.spawn = ["systemctl suspend"];
+            "super+P".action.spawn = ["loginctl" "lock-session"];
+            "super+Shift+P".action.spawn = ["systemctl" "suspend"];
             "super+Shift+D".action.spawn = [
               "sh"
               "-c"
