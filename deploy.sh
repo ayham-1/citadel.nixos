@@ -31,13 +31,18 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
+bw sync
 
 # Mirror the target path structure inside the staging area
 mkdir -p "$TMP_DIR/persistent/etc/sops"
 mkdir -p "$TMP_DIR/tmp/keys"
 
 # Copy SOPS secrets while preserving permissions
-cp -a "$SOPS_SRC/." "$DEST_DIR/"
+cp -a "$SOPS_SRC/secrets.yaml" "$TMP_DIR/persistent/etc/sops/secrets.yaml"
+
+printf 'Fetching SOPS key from Bitwarden...\n'
+bw get password "SOPS_KEY_ID" | tr -d '\n' > "$TMP_DIR/persistent/etc/sops/keys.txt"
+chmod 600 "$TMP_DIR/persistent/etc/sops/keys.txt"
 
 # Retrieve passwords from bitwarden
 printf 'Fetching LUKS root password from Bitwarden...\n'
