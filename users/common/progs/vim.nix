@@ -8,7 +8,6 @@
         vim-fugitive
         vim-gitgutter
         ctrlp-vim
-        vim-polyglot
         vim-bracketed-paste
         vim-surround
         vim-lsp

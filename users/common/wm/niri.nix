@@ -99,15 +99,17 @@
             default-column-width = {proportion = 0.5;};
 
             focus-ring = {
-              enable = true;
+              enable = false;
               width = 2;
               active.color = "#7aa2f7";
               inactive.color = "#414868";
             };
 
             border = {
-              enable = false;
+              enable = true;
               width = 2;
+              active.color = "#7aa2f7";
+              inactive.color = "#414868";
             };
 
             struts = {

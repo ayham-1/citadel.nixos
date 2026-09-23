@@ -25,6 +25,9 @@
     security.polkit.enable = true;
     #security.lockKernelModules = true;
 
+    # mount tmpfs on /tmp
+    boot.tmp.useTmpfs = true;
+
     # Network Hardening
     networking.networkmanager.ethernet.macAddress = "permanent";
     networking.networkmanager.wifi.macAddress = "random";

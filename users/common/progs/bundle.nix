@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./steam.nix
     ./kitty.nix
     ./git.nix
     ./gpg.nix
@@ -13,6 +12,9 @@
     ./fastfetch.nix
     ./foot.nix
     ./kde-connect.nix
+
+    ./obsidian.nix
+    ./steam.nix
   ];
 
   programs.nvf = {

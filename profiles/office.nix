@@ -1,7 +1,6 @@
-{ config, pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ 
-    obsidian 
-    libreoffice-fresh 
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    libreoffice-fresh
 
     texliveFull
     zathura

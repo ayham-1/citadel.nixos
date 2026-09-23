@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   virtualisation.libvirtd = {enable = true;};
   virtualisation.podman.enable = true;
   virtualisation.docker.enable = true;
@@ -12,11 +7,6 @@
     enable = true;
     setSocketVariable = true;
   };
-
-  #virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = ["ayham"];
-  nixpkgs.config.allowUnfree = true;
-  #virtualisation.virtualbox.host.enableExtensionPack = true;
 
   environment.systemPackages = with pkgs; [
     virt-manager

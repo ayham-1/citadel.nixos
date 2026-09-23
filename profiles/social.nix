@@ -13,4 +13,7 @@
     telegram-desktop
     signal-desktop
   ];
+
+  # TODO: remove this
+  citadel.allowedUnfree = ["discord" "discord-unwrapped" "spotify"];
 }

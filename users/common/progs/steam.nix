@@ -9,7 +9,6 @@
   };
 
   config = lib.mkIf config.citadel.users.steam.enable {
-    nixpkgs.config.allowUnfree = true;
     programs.gamemode.enable = true;
     programs.steam = {
       enable = true;
@@ -46,25 +45,19 @@
         enable = true;
         enable32Bit = true;
       };
-
-      #amdgpu.amdvlk = {
-      #    enable = true;
-      #    support32Bit.enable = true;
-      #};
       steam-hardware.enable = true;
     };
 
-    #hardware.graphics.extraPackages = with pkgs; [
-    #  amdvlk
-    #];
-    #hardware.graphics.extraPackages32 = with pkgs; [
-    #  driversi686Linux.amdvlk
-    #];
-
     services.xserver.videoDrivers = ["amdgpu" "modesetting"];
 
-    nixpkgs.config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) ["steam" "steam-original" "steam-run"];
+    citadel.allowedUnfree = [
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
+      "steam-unwrapped"
+      "proton-ge-bin"
+    ];
 
     environment.systemPackages = with pkgs; [steam-run mangohud radeontop gamescope protonup-qt];
   };
