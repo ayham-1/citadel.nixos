@@ -14,6 +14,7 @@
     ../../services/remote-desktop.nix
     ../../services/ssh-server.nix
     ../../services/tailscale.nix
+    ../../services/laptop.nix
     ../../services/wlans.nix
   ];
 

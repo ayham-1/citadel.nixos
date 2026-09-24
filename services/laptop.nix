@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{...}: {
   powerManagement.enable = true;
   services.thermald.enable = true;
   services.tlp = {
@@ -14,6 +14,21 @@
       CPU_MAX_PERF_ON_AC = 100;
       CPU_MIN_PERF_ON_BAT = 0;
       CPU_MAX_PERF_ON_BAT = 20;
+
+      #Optional helps save long term battery health
+      START_CHARGE_THRESH_BAT0 = 20;
+      STOP_CHARGE_THRESH_BAT0 = 80;
     };
+  };
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "suspend";
+  };
+
+  services.upower = {
+    enable = true;
+    criticalPowerAction = "PowerOff";
   };
 }

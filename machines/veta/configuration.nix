@@ -13,6 +13,7 @@
     ../../services/remote-desktop.nix
     ../../services/tailscale.nix
     ../../services/wlans.nix
+    ../../services/laptop.nix
   ];
 
   system.autoUpgrade.enable = false;

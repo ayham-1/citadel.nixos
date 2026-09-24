@@ -70,6 +70,7 @@
       disko
       nh
       sshfs
+      btop
     ];
 
     programs.bash.completion.enable = true;
