@@ -8,12 +8,11 @@
     discord
     newsboat
     yt-dlp
-    spotify
     ferdium
     telegram-desktop
     signal-desktop
   ];
 
   # TODO: remove this
-  citadel.allowedUnfree = ["discord" "discord-unwrapped" "spotify"];
+  citadel.allowedUnfree = ["discord" "discord-unwrapped"];
 }

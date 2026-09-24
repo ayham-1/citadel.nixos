@@ -15,6 +15,7 @@
 
     ./obsidian.nix
     ./steam.nix
+    ./spotify.nix
   ];
 
   programs.nvf = {

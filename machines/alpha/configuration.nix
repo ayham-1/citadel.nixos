@@ -41,6 +41,7 @@
   # lock in twin
   citadel.users.steam.enable = false;
   citadel.users.obsidian.enable = true;
+  citadel.users.spotify.enable = true;
 
   citadel.hardware.zsa.enable = true;
 }
