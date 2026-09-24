@@ -86,6 +86,17 @@
           ++ userLib.mkUsers ["ayham"];
       };
 
+      outpost26 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = attrs;
+        modules =
+          commonModules
+          ++ [
+            ./machines/outpost26/configuration.nix
+          ]
+          ++ userLib.mkUsers ["ayham"];
+      };
+
       labor = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = attrs;

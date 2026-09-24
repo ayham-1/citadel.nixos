@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: {
+{...}: {
   imports = [
     ../common/configuration.nix
 
@@ -14,12 +10,9 @@
     ../../profiles/development.nix
     ../../profiles/office.nix
 
-    ../../profiles/hardware/zsa.nix
-
     ../../services/grub.nix
     ../../services/remote-desktop.nix
     ../../services/ssh-server.nix
-    ../../services/virt.nix
     ../../services/tailscale.nix
     ../../services/wlans.nix
   ];
@@ -27,21 +20,20 @@
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 
-  citadel.machine.hostName = "alpha";
+  citadel.machine.hostName = "outpost26";
 
   citadel.wlans.home.enable = true;
+  citadel.wlans.ovgu.enable = true;
 
   citadel.tailscale.enable = true;
 
-  citadel.remote.server.enable = true;
+  citadel.remote.server.enable = false;
 
-  citadel.ssh.server.enable = true;
-  citadel.ssh.server.enableYubikeyAccess = true;
+  citadel.ssh.server.enable = false;
+  citadel.ssh.server.enableYubikeyAccess = false;
 
   # lock in twin
-  citadel.users.steam.enable = true;
-  citadel.users.obsidian.enable = true;
-  citadel.users.spotify.enable = true;
-
-  citadel.hardware.zsa.enable = true;
+  citadel.users.steam.enable = false;
+  citadel.users.obsidian.enable = false;
+  citadel.users.spotify.enable = false;
 }
