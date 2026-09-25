@@ -94,6 +94,7 @@
       xml.enable = true;
       bash.enable = true;
       markdown.enable = true;
+      cmake.enable = true;
     };
 
     notes = {

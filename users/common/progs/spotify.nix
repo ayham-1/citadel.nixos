@@ -19,6 +19,9 @@
 
     environment.systemPackages = with pkgs; [
       spotify-qt
+      spotify
     ];
+
+    citadel.allowedUnfree = ["spotify"];
   };
 }
