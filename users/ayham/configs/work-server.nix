@@ -1,5 +1,5 @@
 {
-  users.ayham = {
+  users.aboualfadl = {
     git = {
       enable = false;
     };
