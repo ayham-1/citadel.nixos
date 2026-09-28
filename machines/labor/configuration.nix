@@ -1,4 +1,4 @@
-{lib, ...}: {
+{...}: {
   imports = [
     ../common/configuration.nix
 
@@ -20,8 +20,7 @@
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 
-  citadel.machines.common.enable = lib.mkDefault true;
-  citadel.machines.common.hostName = "labor";
+  citadel.machine.hostName = "labor";
 
   citadel.wlans.hti.enable = true;
 

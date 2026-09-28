@@ -14,6 +14,8 @@
     ../../services/tailscale.nix
     ../../services/wlans.nix
     ../../services/laptop.nix
+
+    ../../services/spotify.nix
   ];
 
   system.autoUpgrade.enable = false;

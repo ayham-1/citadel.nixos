@@ -4,7 +4,8 @@
 }: {
   mkUsers = usernames:
     builtins.concatMap (username: [
-      ./../users/${username}/config.nix
+      ./../users/common/user-settings.nix
+      ./../users/${username}/bundle.nix
       {
         _module.args.username = username;
       }

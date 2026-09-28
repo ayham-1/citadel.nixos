@@ -1,17 +1,13 @@
-{username, ...}: {
-  programs.kdeconnect.enable = true;
-
-  networking.firewall = rec {
-    allowedTCPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
-    ];
-    allowedUDPPortRanges = allowedTCPPortRanges;
+{
+  username,
+  lib,
+  ...
+}: {
+  options = {
+    citadel.users.${username}.progs.kdeconnect.enable = lib.mkEnableOption "Citadel: enable kde-connect for user";
   };
 
-  home-manager.users.${username} = {pkgs, ...}: {
+  config = {
     services.kdeconnect = {
       enable = true;
       indicator = true;

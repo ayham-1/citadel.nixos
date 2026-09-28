@@ -63,6 +63,18 @@
   in {
     packages.${system}.ide = ide.neovim;
 
+    homeConfigurations = {
+      "ayham@work" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [
+          ./users/common/hm-bundle.nix
+
+          {citadel = ./users/ayham/configs/work-server.nix;}
+        ];
+        extraSpecialArgs = {username = "ayham";};
+      };
+    };
+
     nixosConfigurations = {
       alpha = nixpkgs.lib.nixosSystem {
         inherit system;

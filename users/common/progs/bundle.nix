@@ -12,15 +12,5 @@
     ./fastfetch.nix
     ./foot.nix
     ./kde-connect.nix
-
-    ./obsidian.nix
-    ./steam.nix
-    ./spotify.nix
   ];
-
-  programs.nvf = {
-    enable = true;
-    settings = import ./../../../services/nvf.nix;
-    enableManpages = true;
-  };
 }

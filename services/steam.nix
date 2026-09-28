@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    citadel.users.steam.enable = lib.mkEnableOption "Citadel: Enables Steam userconfig";
+    citadel.steam.enable = lib.mkEnableOption "Citadel: Enables Steam";
   };
 
-  config = lib.mkIf config.citadel.users.steam.enable {
+  config = lib.mkIf config.citadel.steam.enable {
     programs.gamemode.enable = true;
     programs.steam = {
       enable = true;

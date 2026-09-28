@@ -7,12 +7,13 @@
   ...
 }: {
   imports = [
-    ./progs/bundle.nix
     ./wm/bundle.nix
 
     ./browsers/bundle.nix
 
     ./impermanence.nix
+
+    ./user-settings.nix
   ];
 
   sops.secrets."users/${username}/password".neededForUsers = true;
@@ -37,71 +38,41 @@
     ];
     hashedPasswordFile = config.sops.secrets."users/${username}/password".path;
     shell = pkgs.zsh;
+
+    # TODO: make this optional somehow
+    openssh.authorizedKeys.keys = [
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBEuye7nS9bwj75Io0XnlEjyKJvX7g5zmQh2vuI2hVZ2AAAABHNzaDo= yubikey-global-ssh"
+    ];
   };
+
   programs.zsh.enable = true;
+
+  ### NixOS user-specific
+  services.pcscd.enable = true;
+  services.udev.packages = with pkgs; [
+    yubikey-personalization
+    libu2f-host
+  ];
+  hardware.gpgSmartcards.enable = true;
 
   environment.systemPackages = [home-manager];
 
   services.printing.enable = true;
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = null;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = null;
 
-  home-manager.sharedModules = [
-    niri.homeModules.niri
-  ];
+    sharedModules = [
+      niri.homeModules.niri
+    ];
 
-  home-manager.users.${username} = {
-    home = {
-      username = "${username}";
-      homeDirectory = "/home/${username}";
-      stateVersion = "26.05";
+    extraSpecialArgs = {inherit username;};
+    users.${username} = {
+      imports = [./hm-bundle.nix];
+
+      citadel = import ../${username}/configs/native.nix;
     };
-    programs.home-manager.enable = true;
-
-    # set up xdg variables
-    xdg.enable = true;
-    xdg.userDirs.enable = true;
-    xdg.userDirs.desktop = "$HOME/desk";
-    xdg.userDirs.documents = "$HOME/dox";
-    xdg.userDirs.download = "$HOME/.cache/dl";
-    xdg.userDirs.extraConfig = {XDG_MISC_DIR = "$HOME/misc";};
-    xdg.userDirs.music = "$HOME/muz";
-    xdg.userDirs.pictures = "$HOME/pix";
-    xdg.userDirs.publicShare = "$HOME/pub";
-    xdg.userDirs.templates = "$HOME/templ";
-    xdg.userDirs.videos = "$HOME/vidz";
-
-    # gtk theme
-    gtk = {enable = true;};
-    # qt theme
-    qt = {enable = true;};
-
-    # mime types
-    xdg.mimeApps.defaultApplications = {
-      "application/pdf" = ["zathura.desktop"];
-      "image/*" = ["sxiv.desktop"];
-      "video/png" = ["mpv.desktop"];
-      "video/jpg" = ["mpv.desktop"];
-      "video/*" = ["mpv.desktop"];
-      "image/png" = ["sxiv.desktop"];
-      "image/jpeg" = ["sxiv.desktop"];
-      "image/gif" = ["sxiv.desktop"];
-      "image/webp" = ["sxiv.desktop"];
-      "image/bmp" = ["sxiv.desktop"];
-      "image/tiff" = ["sxiv.desktop"];
-    };
-
-    xdg.mimeApps.associations.added = {
-      "image/png" = ["sxiv.desktop"];
-      "image/jpeg" = ["sxiv.desktop"];
-      "image/gif" = ["sxiv.desktop"];
-      "image/webp" = ["sxiv.desktop"];
-    };
-
-    # Nicely reload system units when changing configs
-    systemd.user.startServices = "sd-switch";
-    services.network-manager-applet.enable = true;
   };
 }

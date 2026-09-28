@@ -19,4 +19,10 @@
     blockbench
     pixelorama
   ];
+
+  programs.nvf = {
+    enable = true;
+    settings = import ./../services/nvf.nix;
+    enableManpages = true;
+  };
 }

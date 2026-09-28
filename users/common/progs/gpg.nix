@@ -5,52 +5,29 @@
   username,
   ...
 }: {
-  options = {
-    citadel.users.${username}.gpg = {
-      enable = lib.mkEnableOption "user: enable gpg";
-      key = lib.mkOption {};
-    };
-  };
-
   config = lib.mkIf config.citadel.users.${username}.gpg.enable {
-    services.pcscd.enable = true;
-    home-manager.users.${username} = {pkgs, ...}: {
-      programs.gpg = {
-        enable = true;
-        mutableKeys = true;
+    programs.gpg = {
+      enable = true;
+      mutableKeys = true;
 
-        scdaemonSettings = {
-          disable-ccid = true;
-          pcsc-shared = true;
-        };
-      };
-      home.packages = with pkgs; [gnupg pinentry-all];
-
-      services.gpg-agent = {
-        enable = true;
-        enableBashIntegration = true;
-        enableSshSupport = true;
-        enableExtraSocket = true;
-        grabKeyboardAndMouse = true;
-        pinentry.package = pkgs.pinentry-curses;
-        sshKeys = [config.citadel.users.${username}.gpg.key];
+      scdaemonSettings = {
+        disable-ccid = true;
+        pcsc-shared = true;
       };
     };
 
-    services.udev.packages = with pkgs; [
-      yubikey-personalization
-      libu2f-host
-    ];
-
-    hardware.gpgSmartcards.enable = true;
-
-    programs.gnupg = {
-      agent.enable = true;
-      agent.pinentryPackage = pkgs.pinentry-curses;
+    services.gpg-agent = {
+      enable = true;
+      enableBashIntegration = true;
+      enableSshSupport = true;
+      enableExtraSocket = true;
+      grabKeyboardAndMouse = true;
+      pinentry.package = pkgs.pinentry-curses;
+      sshKeys = [config.citadel.users.${username}.gpg.key];
     };
-    environment.systemPackages = with pkgs; [
+
+    home.packages = with pkgs; [
       gnupg
-      pinentry-all
       pinentry-curses
       yubikey-manager
     ];

@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    citadel.users.obsidian.enable = lib.mkEnableOption "Citadel: Enables Obsidian userconfig";
+    citadel.obsidian.enable = lib.mkEnableOption "Citadel: Enable Obsidian";
   };
 
-  config = lib.mkIf config.citadel.users.obsidian.enable {
+  config = lib.mkIf config.citadel.obsidian.enable {
     environment.systemPackages = with pkgs; [obsidian];
 
     citadel.allowedUnfree = ["obsidian"];

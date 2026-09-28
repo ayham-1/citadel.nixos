@@ -4,6 +4,8 @@
 
     ./hardware.nix
 
+    ../../desktop/obsidian.nix
+
     ../../profiles/common.nix
     ../../profiles/impermanence.nix
     ../../profiles/social.nix
@@ -16,6 +18,8 @@
     ../../services/tailscale.nix
     ../../services/laptop.nix
     ../../services/wlans.nix
+
+    ../../services/spotify.nix
   ];
 
   system.autoUpgrade.enable = false;
@@ -34,7 +38,8 @@
   citadel.ssh.server.enableYubikeyAccess = false;
 
   # lock in twin
-  citadel.users.steam.enable = false;
-  citadel.users.obsidian.enable = false;
-  citadel.users.spotify.enable = false;
+  #citadel.steam.enable = false;
+
+  citadel.obsidian.enable = false;
+  citadel.spotify.enable = false;
 }
