@@ -95,6 +95,9 @@
       bash.enable = true;
       markdown.enable = true;
       cmake.enable = true;
+      html.enable = true;
+      css.enable = true;
+      asciidoc.enable = true;
     };
 
     notes = {

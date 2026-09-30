@@ -26,6 +26,8 @@
     ../../services/wlans.nix
 
     ../../services/spotify.nix
+    ../../services/steam.nix
+    ../../services/kde-connect.nix
   ];
 
   system.autoUpgrade.enable = false;
@@ -38,12 +40,13 @@
   citadel.tailscale.enable = true;
 
   citadel.remote.server.enable = true;
+  citadel.kdeconnect.enable = true;
 
   citadel.ssh.server.enable = true;
   citadel.ssh.server.enableYubikeyAccess = true;
 
   # lock in twin
-  #citadel.steam.enable = true;
+  citadel.steam.enable = true;
 
   citadel.spotify.enable = true;
   citadel.obsidian.enable = true;

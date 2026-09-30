@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  ...
 }: {
   options = {
     citadel.kdeconnect.enable = lib.mkEnableOption "Citadel: enable kdeconnect";
