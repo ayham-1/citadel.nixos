@@ -53,7 +53,7 @@
           input = {
             keyboard = {
               xkb = {
-                layout = "us,de";
+                layout = "eu";
                 options = "caps:escape,grp:win_space_toggle";
               };
               repeat-delay = 300;

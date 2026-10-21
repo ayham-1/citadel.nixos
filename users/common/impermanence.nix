@@ -16,6 +16,7 @@
         "pix"
         "dox"
         "muz"
+        ".cargo"
         ".config/kdeconnect/"
         ".cache/dl/"
         {
