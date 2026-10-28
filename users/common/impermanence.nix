@@ -17,6 +17,7 @@
         "dox"
         "muz"
         ".cargo"
+        ".rustup"
         ".config/kdeconnect/"
         ".cache/dl/"
         {
