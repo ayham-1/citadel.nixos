@@ -98,6 +98,7 @@
       html.enable = true;
       css.enable = true;
       asciidoc.enable = true;
+      python.enable = true;
     };
 
     notes = {
