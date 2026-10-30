@@ -85,6 +85,7 @@
 
     languages = {
       enableTreesitter = true;
+      enableFormat = true;
 
       nix.enable = true;
       nix.format.enable = true;
@@ -98,7 +99,11 @@
       html.enable = true;
       css.enable = true;
       asciidoc.enable = true;
-      python.enable = true;
+
+      python = {
+        enable = true;
+        lsp.servers = ["pyright"];
+      };
     };
 
     notes = {
