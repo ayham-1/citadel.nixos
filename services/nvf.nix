@@ -88,6 +88,7 @@
       nvim-dap = {
         enable = true;
         ui.enable = true;
+        presets.codelldb.enable = true;
       };
     };
 
