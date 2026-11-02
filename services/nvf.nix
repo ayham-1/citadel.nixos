@@ -10,8 +10,10 @@
       name = lib.mkForce "gruber-darker";
     };
 
-    spellcheck.enable = true;
-    spellcheck.languages = ["en" "de"];
+    spellcheck = {
+      enable = true;
+      languages = ["en" "de"];
+    };
 
     statusline.lualine.enable = true;
     telescope.enable = true;
@@ -64,7 +66,6 @@
 
     formatter = {conform-nvim.enable = true;};
     binds = {whichKey.enable = true;};
-    debugger.nvim-dap.enable = true;
     diagnostics.enable = true;
     dashboard.startify.enable = true;
 
@@ -83,9 +84,17 @@
       autoindent = true;
     };
 
+    debugger = {
+      nvim-dap = {
+        enable = true;
+        ui.enable = true;
+      };
+    };
+
     languages = {
       enableTreesitter = true;
       enableFormat = true;
+      enableDAP = true;
 
       nix.enable = true;
       nix.format.enable = true;
