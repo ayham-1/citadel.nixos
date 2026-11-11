@@ -163,7 +163,6 @@
         };
 
         profiles.lwolf = {
-          id = 0;
           name = "lwolf";
           isDefault = true;
 
@@ -187,7 +186,6 @@
               duckduckgo-privacy-essentials
               privacy-badger
               unpaywall
-              terms-of-service-didnt-read
             ];
           };
         };

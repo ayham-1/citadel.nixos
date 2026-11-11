@@ -21,9 +21,16 @@
     treesitter.enable = true;
     autocomplete.nvim-cmp.enable = true;
 
+    clipboard = {
+      enable = true;
+      providers.wl-copy.enable = true;
+      registers = "unnamedplus";
+    };
+
     lsp = {
       enable = true;
       formatOnSave = true;
+      inlayHints.enable = true;
       lspconfig.enable = true;
       lspkind.enable = true;
       lspsaga.enable = true;
