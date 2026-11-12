@@ -52,4 +52,6 @@
   citadel.obsidian.enable = true;
 
   citadel.hardware.zsa.enable = true;
+
+  citadel.security.lockOnYubikeyDisconnect = true;
 }
