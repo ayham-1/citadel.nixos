@@ -1,5 +1,5 @@
 {
-  description = "The Citadel NixOS Config";
+  description = "The Citadel NixOS Distribution";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -28,97 +28,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nur,
-    flake-utils,
-    home-manager,
-    nixos-hardware,
-    stylix,
-    sops-nix,
-    impermanence,
-    nvf,
-    niri,
-    disko,
-    ...
-  } @ attrs: let
-    system = "x86_64-linux";
-    ide = nvf.lib.neovimConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [./services/nvf.nix];
-    };
-    userLib = import ./lib/users.nix {
-      inherit home-manager niri;
-    };
-    commonModules = [
-      stylix.nixosModules.stylix
-      nur.modules.nixos.default
-      nvf.nixosModules.default
-      disko.nixosModules.disko
-      home-manager.nixosModules.home-manager
-    ];
-  in {
-    packages.${system}.ide = ide.neovim;
-
-    homeConfigurations = {
-      "aboualfadl@work" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [
-          ./users/common/hm-bundle.nix
-
-          {citadel = import ./users/ayham/configs/work-server.nix;}
-        ];
-        extraSpecialArgs = {username = "aboualfadl";};
-      };
-    };
-
-    nixosConfigurations = {
-      alpha = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = attrs;
-        modules =
-          commonModules
-          ++ [
-            ./machines/alpha/configuration.nix
-          ]
-          ++ userLib.mkUsers ["ayham"];
-      };
-
-      veta = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = attrs;
-        modules =
-          commonModules
-          ++ [
-            ./machines/veta/configuration.nix
-          ]
-          ++ userLib.mkUsers ["ayham"];
-      };
-
-      outpost26 = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = attrs;
-        modules =
-          commonModules
-          ++ [
-            ./machines/outpost26/configuration.nix
-          ]
-          ++ userLib.mkUsers ["ayham"];
-      };
-
-      labor = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = attrs;
-        modules =
-          commonModules
-          ++ [
-            ./machines/labor/configuration.nix
-          ]
-          ++ userLib.mkUsers ["ayham"];
-      };
-    };
-  };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
 }

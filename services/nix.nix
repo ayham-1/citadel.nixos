@@ -1,9 +1,9 @@
-{ config, ... }: {
+{config, ...}: {
   nix = {
     settings.sandbox = true;
     settings = {
-      trusted-users = [ "root" "@wheel" ];
-      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = ["cremator"];
+      experimental-features = ["nix-command" "flakes"];
     };
   };
 }

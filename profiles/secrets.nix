@@ -12,7 +12,7 @@
     defaultSopsFormat = "yaml";
     validateSopsFiles = false;
     age = {
-      # needs to be copied into the install machine and the secrets.yaml
+      # needs to be copied into the install machine with the secrets.yaml
       keyFile = "/persistent/etc/sops/keys.txt";
       generateKey = false;
     };
