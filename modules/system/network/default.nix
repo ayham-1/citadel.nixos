@@ -1,5 +1,14 @@
-{...}: {
-  flake.citadel.modules.network = {pkgs, ...}: {
+{self, ...}: {
+  flake.citadel.modules.network = {pkgs, ...}: let
+    modules = with self.citadel.modules.network; [
+      tailscale
+      firewall
+      wlans
+      lans
+    ];
+  in {
+    imports = modules;
+
     networking = {
       networkmanager = {
         enable = true;
@@ -12,12 +21,6 @@
       nameservers = ["1.1.1.1" "8.8.8.8"];
 
       nftables.enable = true;
-    };
-
-    services = {
-      firewalld = {
-        enable = true;
-      };
     };
 
     programs.nm-applet = {

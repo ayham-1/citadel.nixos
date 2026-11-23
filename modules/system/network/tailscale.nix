@@ -21,13 +21,6 @@
         mode = "0400";
         path = "/etc/tailscale.key";
       };
-
-      networking = {
-        firewall = {
-          trustedInterfaces = [config.services.tailcale.interfaceName];
-          allowedUDPPorts = [config.services.tailscale.port];
-        };
-      };
     };
   };
 }
